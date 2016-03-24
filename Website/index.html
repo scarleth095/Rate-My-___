@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+
+    <script src="js/jquery-2.2.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script src="js/login.js"></script>
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Rate My _____</h1>
+            <p>Get feedback on anything!</p>
+
+
+
+            <script>
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId: '959848700776434',
+                        xfbml: true,
+                        version: 'v2.5'
+                    });
+                };
+
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "js/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+
+
+
+            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true">
+            </div>
+
+            <button onclick="facebookLogin()">Login</button>
+            <button id="one" onclick="updateThing()">Logout</button>
+            <script>
+                function facebookLogin() {
+                    var FB = window.FB;
+                    var scopes = 'email,user_likes,public_profile';
+
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                            appId: '959848700776434',
+                            cookie: true,
+                            xfbml: true,
+                            version: 'v2.5'
+                        });
+                    };
+
+                    FB.login(function(response) {
+                        if (response.status === 'connected') {
+                            console.log('The user has logged in!');
+
+                            $('#one span').text('Hi I am replace');
+
+
+                            FB.api('/me', function(response) {
+                                console.log('Good to see you, ' + response.name + '.');
+
+                                $('#one span').text('Good to see you, ' + response.name+ '.');
+
+                            });
+                        }
+                    }, {
+                        scope: scopes
+                    });
+
+                    FB.logout(function(response) {
+                        // user is now logged out
+                    });
+                }
+
+
+
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+
+
+                function updateThing() {
+                    //alert( "Handler for .click() called." );
+                    $('#one span').text('Hi I am replace');
+
+
+
+
+                }
+            </script>
+
+
+            <div id="one">
+                <div class="first"></div>
+                <span>"Hi I am text"</span>
+                <div class="second"></div>
+                <div class="third"></div>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Groundbreaking</h3>
+                <p>Find out what people really think!</p>
+                <p>Unbiased, unpaid reviews of your thing</p>
+            </div>
+            <div class="col-sm-6">
+                <h3>Revolutionary</h3>
+                <p>No limits</p>
+                <p>Get feedback that works</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <script>
+                //document.getElementById("demo").innerHTML =
+                // employees.employees[1].firstName + " " + obj.employees[1].lastName;
+
+                //alert(employees);
+
+                //if(employees[0].firstName.equals("John")){
+                //  alert( "Handler for .click() called." );
+                //}
+            </script>
+
+            <p id="demo"></p>
+
+            <script>
+                var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
+
+                var obj = JSON.parse(text);
+                /*
+                document.getElementById("demo").innerHTML =
+                    obj.name + "<br>" +
+                    obj.street + "<br>" +
+                    obj.phone;
+                */
+            </script>
+
+        </div>
+
+        <div class="col-sm-1"></div>
+
+    </div>
+
+    <p id="demo"></p>
+
+
+
+
+</body>
+
+</html>
