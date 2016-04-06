@@ -1,0 +1,34 @@
+
+#not a scrolling nav
+    #home
+    #search 
+    #subsection
+        #clothing
+        #art
+        #writing
+        #etc
+    #notifcation
+        # notifcation dropdown
+    #user profile
+        #user profile dropdown
+        #logout
+        
+(!--Profile Page)        
+    #profile left sidebar
+    #profile right thumbnail rates
+        # shows your posts
+            #number of total comments. 
+            # rate star
+            # notfication badge of how many comments since you last checked the page 
+        (!---Divided Section)
+        # your rates posts 
+            # shows a notification thumbnail of how many comments have been posted since you last checked the page
+
+(!--Home page)
+    # header(jumbotron)
+        #slide show top 10 rates
+    #
+
+(!--Other users page)
+
+(!--Subsection Page)
