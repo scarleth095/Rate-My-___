@@ -1,0 +1,19 @@
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+.title{
+    font-family: 'Michroma', sans-serif;
+}
+.text-left{
+    text-align: left !important;
+    float: left;
+   
+}
+.text-right{
+    text-align: right !important;
+
+}
+.line-div{
+    display: block;
+}

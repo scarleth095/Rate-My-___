@@ -9,13 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="./stye.css">
 
     <script src="js/login.js"></script>
 
 </head>
 
 <body>
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar-inverse navbar-fixed-top ">
          <div class="container-fluid">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,18 +26,26 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>                        
                </button>
-               <a class="navbar-brand" href="index.html"><span class="spacing"><font color ="#bf2e26">Rate My Blank</font></span></a>
+               <a class="navbar-brand" href="index.html"><span class="spacing"><font class="title"color ="#bf2e26">Rate My Blank</font></span></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home</a></li>
+                   <li><a href="#"><i class="fa fa-home fa-lg"></i> Home</a></li>
                 </ul>
                   
                       <ul class="nav navbar-nav navbar-right">
-                          <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href="">User <span class="caret"></span></a>
+                           <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href=""> Notifications <span class="badge">42</span> <span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                         <li><a href="Interview/index.html">Logout</a></li>
+                         <li><a href="">You have one new comment</a></li>
+                         
+                     </ul>  
+                          <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href=""><!--profilepicture--> User&nbsp;<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                          <li><a href="Interview/index.html"><i class="fa fa-user"></i> Profile</a></li>
+                          <li><a href="Interview/index.html"><i class="fa fa-cog"></i> Settings</a></li>
+                         <li><a href="Interview/index.html"><i class="fa fa-sign-out"></i> Logout</a></li>
                          
                      </ul>
                   
@@ -42,7 +53,7 @@
                  
                </ul>
                
-               <form class="navbar-form navbar-left" role="search">
+               <form class="navbar-form navbar-right" role="search">
                   <div class="form-group">
                      <input type="text" class="form-control" placeholder="Search for ...">
                   </div>
@@ -53,170 +64,154 @@
             </div>
     </div>  
       </nav>
+    <header>
+        <center><div class="jumbotron"> <h1 class="title"><font color ="#bf2e26">Welcome</font> to Rate My Blank</h1></div>
+            <h2 class="title">Top Posts</h2>
+             <div class="col-lg-40">
+               <div class="well">
+                  <div id="myCarousel" class="carousel slide"  data-ride="carousel">
+    
+                     <!-- Carousel items -->
+                     <div class="carousel-inner">
+                         <div class="item active">
+                           <div class="row">
+                              <div class="col-sm-6 col-md-4">
+                                 <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                         
+                        <div class="item">
+                           <div class="row">
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                         
+                        <div class="item">
+                           <div class="row">
+                              <div class="col-sm-6 col-md-4">
+                                 <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="thumbnail">
+                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="">
+                                    <div class="caption">
+                                       <h3>My Outfit of the Day #1</h3>
+                                        <p>Sarah Smith</p>
+                                        <div class="text-right"><span class="text-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </span><span class="text-right">1/17/16</span></div>
+                                        <p></p>
+                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                     <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                 <!-- Indicators -->
+
+                  </div>
+   
+                  <!--/myCarousel-->
+        </center>
+    </header>
+    
+             
+     
 
 
 
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Rate My _____</h1>
-            <p>Get feedback on anything!</p>
-
-
-
-            <script>
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId: '959848700776434',
-                        xfbml: true,
-                        version: 'v2.5'
-                    });
-                };
-
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {
-                        return;
-                    }
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "js/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            </script>
-
-
-
-
-            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true">
-            </div>
-
-            <button onclick="facebookLogin()">Login</button>
-            <button id="one" onclick="updateThing()">Logout</button>
-            <script>
-                function facebookLogin() {
-                    var FB = window.FB;
-                    var scopes = 'email,user_likes,public_profile';
-
-                    window.fbAsyncInit = function() {
-                        FB.init({
-                            appId: '959848700776434',
-                            cookie: true,
-                            xfbml: true,
-                            version: 'v2.5'
-                        });
-                    };
-
-                    FB.login(function(response) {
-                        if (response.status === 'connected') {
-                            console.log('The user has logged in!');
-
-                            $('#one span').text('Hi I am replace');
-
-
-                            FB.api('/me', function(response) {
-                                console.log('Good to see you, ' + response.name + '.');
-
-                                $('#one span').text('Good to see you, ' + response.name+ '.');
-
-                            });
-                        }
-                    }, {
-                        scope: scopes
-                    });
-
-                    FB.logout(function(response) {
-                        // user is now logged out
-                    });
-                }
-
-
-
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {
-                        return;
-                    }
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-
-
-
-                function updateThing() {
-                    //alert( "Handler for .click() called." );
-                    $('#one span').text('Hi I am replace');
-
-
-
-
-                }
-            </script>
-
-
-            <div id="one">
-                <div class="first"></div>
-                <span>"Hi I am text"</span>
-                <div class="second"></div>
-                <div class="third"></div>
-            </div>
-
-
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-                <h3>Groundbreaking</h3>
-                <p>Find out what people really think!</p>
-                <p>Unbiased, unpaid reviews of your thing</p>
-            </div>
-            <div class="col-sm-6">
-                <h3>Revolutionary</h3>
-                <p>No limits</p>
-                <p>Get feedback that works</p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <script>
-                //document.getElementById("demo").innerHTML =
-                // employees.employees[1].firstName + " " + obj.employees[1].lastName;
-
-                //alert(employees);
-
-                //if(employees[0].firstName.equals("John")){
-                //  alert( "Handler for .click() called." );
-                //}
-            </script>
-
-            <p id="demo"></p>
-
-            <script>
-                var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
-
-                var obj = JSON.parse(text);
-                /*
-                document.getElementById("demo").innerHTML =
-                    obj.name + "<br>" +
-                    obj.street + "<br>" +
-                    obj.phone;
-                */
-            </script>
-
-        </div>
-
-        <div class="col-sm-1"></div>
-
-    </div>
-
-    <p id="demo"></p>
+  
 
 
 
