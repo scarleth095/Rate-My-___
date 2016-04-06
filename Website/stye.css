@@ -15,9 +15,10 @@
     float: right;
 
 }
-.text-center{
+.align-center{
     text-align: center!important;
-    float:inherit;
+    float:none;
+    display: inline;
 }
 .line-div{
     display: block;
@@ -25,4 +26,48 @@
 .navbar .profile-image{
     margin: -10px 0px;
     height: 40px;
+}
+
+#wrapper {
+    line-height: 1.4;
+    background: rgba(255,255,255,.2);
+    margin: 2% !important;
+    margin-top: 0% !important;
+}
+@media screen and (max-width: 760px) {
+    /* mobile */
+    #wrapper {
+        margin: 0;
+        padding: 1em;
+    }
+
+  
+
+    .widget-box {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    div.main-text {
+        padding: 0 1em 1em;
+    }
+}
+
+@media screen and (min-width: 761px) {
+    #wrapper {
+        margin: 1.5em 0.3em 4em;
+        padding: 2em;
+        border-radius: 0.4em;
+        box-shadow: 0 0 0.3em 0.3em #e6e6e6;
+    }
+
+    
+
+    .widget-box {
+        width: 100%;
+        float: right;
+        margin: 0 0 1em 2em;
+        box-shadow: 0 0 0.2em 0.2em #e6e6e6;
+    }
 }
