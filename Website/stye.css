@@ -9,6 +9,10 @@ body{
     border-color: indianred;
     color: white;
 }
+.img-responsive{
+    margin-top: 15px;
+    max-height: 100px;
+}
 .form-control{
     background-color: rgba(255,255,255,.8);
 }
