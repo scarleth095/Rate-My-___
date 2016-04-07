@@ -9,15 +9,21 @@ body{
     border-color: indianred;
     color: white;
 }
-.img-responsive{
-    margin-top: 15px;
-    max-height: 100px;
+.img-title{
+    margin-top: 15px !important;
+    max-height: 100px !important;
 }
 .form-control{
     background-color: rgba(255,255,255,.8);
 }
 .pad2{
     margin-top: 20px;
+}
+.title2{
+    font-family: Michroma;
+}
+.post-star{
+    font-size: 20px;
 }
 .nav-pills > li.active > a {
     background-color:indianred;
@@ -26,7 +32,7 @@ body{
     background-color:indianred;
 }
 .nav-pills > li>a{
-    color: black;
+    color: white;
 }
 .line-red{
     width: 100%;
@@ -124,6 +130,9 @@ font-family: 'Poiret One', cursive;
         box-shadow: 0 0 0.2em 0.2em #fcfcfc;
     }
 }
+.button-pad-left{
+    margin-left: 20px;
+}
 .pad{
     padding-top: 20px;
 }
@@ -146,6 +155,18 @@ font-family: 'Poiret One', cursive;
     border-color: indianred;
     color: white;
     background-color: indianred;
+}
+.btn-info {
+    border-color: slategray;
+    color: white;
+    background-color: slategray;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+    border-color: lightslategray;
+    color: white;
+    background-color: lightslategray;
 }
 .full-red{
     background-color: indianred;
