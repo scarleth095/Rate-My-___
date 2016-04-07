@@ -31,6 +31,9 @@ body{
 .nav-pills>li.active>a:hover {
     background-color:indianred;
 }
+.nav-pills>li> a:hover {
+    background-color:slategray;
+}
 .nav-pills > li>a{
     color: white;
 }
