@@ -5,20 +5,40 @@
     <title></title>
 
     <script src="js/jquery-2.2.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    !-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    
+    
+    
+    
+    
+    
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    
+    
+    
+    
     <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="./stye.css">
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower|Poiret+One|Amatic+SC|Architects+Daughter|Josefin+Slab|Coming+Soon|Source+Code+Pro|Syncopate|Walter+Turncoat|VT323' rel='stylesheet' type='text/css'>
 
     <script src="js/login.js"></script>
 
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top ">
+<nav class="navbar navbar-inverse navbar-fixed-top center ">
          <div class="container-fluid">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -26,15 +46,22 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>                        
                </button>
-               <a class="navbar-brand" href="index.html"><span class="spacing"><font class="title"color ="#bf2e26">Rate My Blank</font></span></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-               <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="index.html"><img src="./image/logo.png" alt="logo"></a>
+             </div>
+    
+           
+    <div class="navbar-inner">
+               <ul class="nav navbar-nav ">
+                    
+
                    
                 </ul>
+             </div>
+             
+             <div class="collapse navbar-collapse" id="myNavbar">
                   
                       <ul class="nav navbar-nav navbar-right">
-                          <li><a href="#"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                          <li class="active"><a href="#"><i class="fa fa-home fa-lg"></i> Home</a></li>
                            <li class="dropdown">
                      <a class="dropdown-toggle" data-toggle="dropdown" href=""> <i class="fa fa-bell fa-lg"></i> <span class="badge">42</span> <span class="caret"></span></a>
                      <ul class="dropdown-menu">
@@ -42,7 +69,7 @@
                          
                      </ul>  
                           <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href=""> <img class="img-circle profile-image" height="45px" width="45px"alt="Brand" src="./image/SarahSmith.jpeg"> Sarah Smith&nbsp;<span class="caret"></span></a>
+                     <a class="dropdown-toggle" data-toggle="dropdown" href=""> <img class="img-rounded profile-image" height="45px" width="45px"alt="Brand" src="./image/SarahSmith.jpeg"> Sarah Smith&nbsp;<span class="caret"></span></a>
                      <ul class="dropdown-menu">
                           <li><a href="Interview/index.html"><i class="fa fa-user"></i> Profile</a></li>
                           <li><a href="Interview/index.html"><i class="fa fa-cog"></i> Settings</a></li>
@@ -55,23 +82,28 @@
                </ul>
                
                 
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for ..." name="q">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-            </div>
-        </form>
+        <form class="navbar-form">
+        <div class="form-group" style="display:inline;">
+          <div class="input-group" style="display:table;">
+            
+            <input class="form-control" name="search" placeholder="Search ..." autocomplete="off" autofocus="autofocus" type="text">
+              <span class=" btn btn-danger input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+          </div>
+        </div>
+      </form>
                 
                 
             </div>
     </div>  
       </nav>
     <section>
-        <center><div class="jumbotron"> <h1 class="title">Welcome to<font color ="#bf2e26"> Rate My Blank</font> </h1></div>
-            <h3 class="title">Top Posts</h3>
-             <div class="col-lg-40">
+         
+        <center><div class="jumbotron"> 
+            <img height="80px" src="./image/logo7.png"></div>
+            <div id="wrapper" class="clear">
+            <div class="full-black"><h2 class="title"> <i class="fa fa-star-o"></i> Top Posts <i class="fa fa-star-o"></i></h2></div>
+            
+                <div class="col-lg-40">
                <div class="well">
                   <div id="myCarousel" class="carousel slide"  data-ride="carousel">
     
@@ -90,7 +122,7 @@
                                         <div class="align-right">4/02/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -105,7 +137,7 @@
                                         <div class="align-right">2/13/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -120,7 +152,7 @@
                                         <div class="align-right">3/17/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -140,7 +172,7 @@
                                         <div class="align-right">3/21/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -155,7 +187,7 @@
                                         <div class="align-right">1/13/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -170,7 +202,7 @@
                                         <div class="align-right">4/3/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -190,7 +222,7 @@
                                         <div class="align-right">3/27/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -205,7 +237,7 @@
                                         <div class="align-right">4/02/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -220,7 +252,7 @@
                                         <div class="align-right">3/19/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -238,13 +270,23 @@
    
                   <!--/myCarousel-->
             
-            
+            </div>
             
         </center>
+
     </section>
+     
     <div style="clear: both;"></div>
+
+
+    <p class="pad"></p>
+    
+     <p class="pad"></p>
+
  
     <div id="wrapper" class="clear">
+        <div class="full-red"><h2 class="title"> All Posts</h2></div>
+         <p class="pad"></p>
 
 <div class="btn-group">
   <button type="button" class="btn btn-default"><i class="fa fa-filter"></i> Filter</button>
@@ -259,8 +301,25 @@
   </ul>
         </div>
         <span class= "title"> Recently Added</span>
-        <p></p>
+         
+         <nav>
+              <ul class="pager">
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                <li><a href="./index.html">1</a></li>
+                <li><a href="2/index.html">2</a></li>
+                <li class="next"><a href="2/index.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+              </ul>
+          </nav>
+        
+        
+       
+        
+        
+        
+
           <center>
+             
+
         <div class="row">
                               <div class="col-sm-6 col-md-4">
                                  <div class="thumbnail">
@@ -273,7 +332,7 @@
                                         <div class="align-right">4/05/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -288,7 +347,7 @@
                                         <div class="align-right">4/06/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -303,7 +362,7 @@
                                         <div class="align-right">4/06/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -321,7 +380,7 @@
                                         <div class="align-right">4/07/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -336,7 +395,7 @@
                                         <div class="align-right">4/05/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
@@ -351,13 +410,20 @@
                                         <div class="align-right">4/04/16</div>
                                         <div style="clear: both;"></div>
                                         <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-danger btn-block" role="button">See More</a> </p>
+                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
                                     </div>
                                  </div>
                               </div>
                            </div>
       
-        <p class="title"><a href="#" class="btn btn-default btn-lg btn-block" role="button"> More</a> </p>
+        <nav>
+              <ul class="pager">
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                <li><a href="./index.html">1</a></li>
+                <li><a href="2/index.html">2</a></li>
+                <li class="next"><a href="2/index.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+              </ul>
+          </nav>
         
         </center>
         

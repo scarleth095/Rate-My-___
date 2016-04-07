@@ -1,9 +1,33 @@
+body{
+    background-color: #596673;
+}
+.pager a{
+    color: indianred;
+}
+.input-group-addon{
+    background-color: indianred;
+    border-color: indianred;
+    color: white;
+}
+.form-control{
+    background-color: rgba(255,255,255,.8);
+}
+.jumbotron{
+    background-color: #232323;
+    color: white;
+    border-radius: 15%;
+}
 .carousel-control.left, .carousel-control.right {
     background-image: none
 }
 
+.thumbnail img { 
+    width: 100% !important;
+    height: 300px !important; 
+} 
+
 .title{
-    font-family: 'Michroma', sans-serif;
+font-family: 'Poiret One', cursive;
 }
 .align-left{
     text-align: left !important;
@@ -30,7 +54,7 @@
 
 #wrapper {
     line-height: 1.4;
-    background: rgba(255,255,255,.2);
+    background: rgba(255,255,255,.8);
     margin: 2% !important;
     margin-top: 0% !important;
 }
@@ -59,7 +83,7 @@
         margin: 1.5em 0.3em 4em;
         padding: 2em;
         border-radius: 0.4em;
-        box-shadow: 0 0 0.3em 0.3em #e6e6e6;
+        box-shadow: 0 0 0.3em 0.3em #fcfcfc;
     }
 
     
@@ -68,6 +92,65 @@
         width: 100%;
         float: right;
         margin: 0 0 1em 2em;
-        box-shadow: 0 0 0.2em 0.2em #e6e6e6;
+        box-shadow: 0 0 0.2em 0.2em #fcfcfc;
     }
+}
+.pad{
+    padding-top: 20px;
+}
+.full-black{
+    background-color: black;
+    width: 100%;
+    color: white;
+    margin-top: -25px;
+    text-align: center;
+    border-radius: 20px;
+}
+.btn-default {
+    border-color: indianred;
+    color: indianred;
+    background-color: white;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    border-color: indianred;
+    color: white;
+    background-color: indianred;
+}
+.full-red{
+    background-color: indianred;
+    width: 100%;
+    color: white;
+    margin-top: -25px;
+    text-align: center;
+    border-radius: 20px;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+.navbar-brand>img {
+  padding: 7px 15px;
+}
+
+.thumbnail h3{
+    font-family: 'Poiret One', cursive;
+}
+
+
+
+.badge{
+background-color: indianred;
+}
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    padding-left: 20%;
 }
