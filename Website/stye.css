@@ -16,6 +16,31 @@ body{
 .form-control{
     background-color: rgba(255,255,255,.8);
 }
+.pad2{
+    margin-top: 20px;
+}
+.nav-pills > li.active > a {
+    background-color:indianred;
+}
+.nav-pills>li.active>a:hover {
+    background-color:indianred;
+}
+.nav-pills > li>a{
+    color: black;
+}
+.line-red{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: indianred;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
+    color: white;
+    border-radius: 20px;
+    
+        
+}
 .jumbotron{
     background-color: #232323;
     color: white;
@@ -113,7 +138,7 @@ font-family: 'Poiret One', cursive;
 .btn-default {
     border-color: indianred;
     color: indianred;
-    background-color: white;
+    background-color: rgba(255,255,255,.6);
 }
 
 .btn-default:hover,
