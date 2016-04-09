@@ -1,12 +1,15 @@
 from flask import jsonify
 
+
 class ErrorCodes(object):
     INVALID_CREDENTIALS = -1
     INVALID_REQUEST = -2
     INVALID_TOKEN = -3
     USER_DOES_NOT_EXIST = -5
-    THREAT_DOES_NOT_EXIST = -6
+    POST_DOES_NOT_EXIST = -6
     INDEX_OUT_OF_BOUNDS = -7
+    FACEBOOK_ERROR = -8
+
 
 class APIException(Exception):
     def __init__(self, message, status_code, error_code):
@@ -37,6 +40,15 @@ class UserDoesNotExist(APIException):
 class IndexOutOfBounds(APIException):
     def __init__(self, message):
         super(IndexOutOfBounds, self).__init__(message, 404, ErrorCodes.INDEX_OUT_OF_BOUNDS)
+
+class PostDoesNotExist(APIException):
+    def __init__(self, message):
+        super(PostDoesNotExist, self).__init__(message, 404, ErrorCodes.POST_DOES_NOT_EXIST)
+
+class FacebookError(APIException):
+    def __init__(self, message):
+        super(FacebookError, self).__init__(message, 404, ErrorCodes.FACEBOOK_ERROR)
+
 
 def register_error_handlers(app):
     @app.errorhandler(APIException)

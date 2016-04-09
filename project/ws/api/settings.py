@@ -10,6 +10,16 @@ class BaseConfiguration(object):
     SECRET_KEY = '\xe8-~cf\xb9\xfb\xe3\xf9\x1aUdG\xd1\xebQ\x14\xee\xef\xde~o\xb8i'
     # REST API SETTINGS
     BUNDLE_ERRORS = True
+    OAUTH_CREDENTIALS = {
+        'facebook': {
+            'secret': 'a86403feedb02cbfd069b191bdc008d2',
+        }
+    }
+    FACEBOOK_ENDPOINTS = {
+    'login_url':
+    'https://graph.facebook.com/v2.5/me?locale=en_US&fields=name,email,picture.width(800).height(800)',
+    'access_token_url': 'https://graph.facebook.com/v2.3/oauth/access_token'
+    }
 
 class DevelopConfiguration(BaseConfiguration):
     DEBUG = True

@@ -1,13 +1,32 @@
-OAUTH_CREDENTIALS = {
-        'facebook': {
-            'id': '959848700776434',
-            'secret': 'a86403feedb02cbfd069b191bdc008d2',
-        }
-    }
+from functools import wraps
+import logging
 
-FACEBOOK_ENDPOINTS = {
-    'login_url':
-    'https://graph.facebook.com/v2.5/me?locale=en_US&fields=name,email,picture.width(800).height(800)',
-    'access_token_url': 'https://graph.facebook.com/v2.3/oauth/access_token'
-}
+from flask import request
 
+import api.exceptions as exceptions
+from models import User
+
+logger = logging.getLogger('abcss_ws_python')
+
+
+class Auth(object):
+    """
+    Authentication wrappers for API endpoints auth token is in the Authorization header
+    """
+
+    @staticmethod
+    def authentication_required():
+        def decorator(f):
+            @wraps(f)
+            def decorated(*args, **kwargs):
+                token = None
+                uid = None
+                if 'Authorization' in request.headers and 'UID' in request.headers:
+                    token = request.headers['Authorization']
+                    uid = int(request.headers['UID'])
+                if not token or not uid:
+                    raise exceptions.InvalidToken('Token or UID Not supplied in header')
+                User.verify_auth_token(token, uid)
+                return f(*args, **kwargs)
+            return decorated
+        return decorator

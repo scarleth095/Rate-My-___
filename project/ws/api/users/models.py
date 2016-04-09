@@ -1,8 +1,7 @@
 import logging
 
 from api.core import db
-from flask import request, current_app
-from flask_oauthlib.client import OAuthException
+from flask import current_app
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 import api.exceptions as exceptions
 
@@ -12,10 +11,10 @@ logger = logging.getLogger('ws_python')
 class User(db.Document):
     """
     """
-    uid = db.StringField(required=True, unique=True)  # facebook id
+    uid = db.SequenceField(required=True, unique=True)  # user id
     name = db.StringField(required=True)
     profile_picture_url = db.StringField()
-    email = db.StringField()
+    email = db.StringField(unique=True, required=True)
     token = db.StringField()
     facebook_token = db.StringField()
 

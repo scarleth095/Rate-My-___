@@ -31,9 +31,10 @@ def api_app_factory(config_filename):
     # =====================ROUTING SETUP============================= #
 
     from users.views import AuthorizedEP
+    from posts.views import PostEP
 
     # REGISTER API ROUTES
-    api.add_resource(AuthorizedEP, '/auth/facebook',
-                     endpoint="api.authorized")
+    api.add_resource(AuthorizedEP, '/auth/facebook')
+    api.add_resource(PostEP, '/posts/post/')
     api.init_app(app)
     return app

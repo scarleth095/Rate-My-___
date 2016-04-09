@@ -1,0 +1,37 @@
+// POSTS ENDPOINTS
+
+url POST: /api/posts/post/create
+
+Request:
+{
+    "uid": 2,
+    "token": "123421221",
+    "title": "This is my new post",
+    "description": "Its a greate post",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tags": [
+        {
+            "text": "new post"
+        },
+        {
+            "text": "Rick Astley"
+        }
+    ]
+}
+
+
+Response:
+{
+    "uid": 2,
+    "title": "This is my new post",
+    "description": "Its a greate post",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tags": [
+        {
+            "text": "new post"
+        },
+        {
+            "text": "Rick Astley"
+        }
+    ]
+}
