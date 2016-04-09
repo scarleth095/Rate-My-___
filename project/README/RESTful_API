@@ -1,0 +1,104 @@
+STRUCTURE: http://mattupstate.com/python/2013/06/26/how-i-structure-my-flask-applications.html
+           https://github.com/mattupstate/overholt
+
+    I used this as inspiration for my projects structure. Read through the article and look at the example project overholt.
+
+    IMPORTANT: If you are going to import from a folder make sure you add a __init__.py file to the folder.
+               http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html
+
+REST CONVENTIONS: http://restful-api-design.readthedocs.org/en/latest/methods.html
+
+    Read through this before making a new endpoint to pick the correct http method.
+
+FLASK-RESTFUL: https://flask-restful.readthedocs.org/en/0.3.4/index.html
+
+    This is the library I used to implement the restful API.
+
+SETTINGS:
+
+    Set development, production, and test settings here
+
+    # This setting hooks up the flask app with the container running mongo_db
+
+    if 'DB_PORT' in os.environ:
+        MONGODB_SETTINGS = {
+            'db': 'abcss_develop_db',
+            'host': os.environ['DB_PORT_27017_TCP_ADDR']+':' + os.environ['DB_PORT_27017_TCP_PORT']
+        }
+
+    else:
+        MONGODB_SETTINGS = {
+            'db': 'abcss_local_develop_db'
+        }
+
+    https://docs.docker.com/userguide/dockerlinks/
+    explains how the environment variables get set
+
+    LOGGING:
+        Use a dictionary to config logging read about it here.
+        https://www.python.org/dev/peps/pep-0391/
+
+TOKENS:
+    Tokens are generated using itsdangerous
+    http://pythonhosted.org/itsdangerous/
+    explanation of code here.
+    http://blog.miguelgrinberg.com/post/restful-authentication-with-flask
+
+    tokens are sent to a user after he has logged in using the login endpoint.
+    The user then stores the token in html5 localStorage and uses it to facilitate
+    future API Requests, by passing it into the Authorization Header. This token is
+    then verified that it is 1. Not expired 2. The token was generated for the user
+    3. the token is current.
+
+FIELDS:
+    fields.py files use marshmallow
+    http://flask-marshmallow.readthedocs.org/en/latest/ to serialize and deserialize
+    requests and responses.
+
+FACTORY:
+    Method to create the app. Allows the app to be created with different configs ie Production, Test, Development
+    http://flask.pocoo.org/docs/0.10/patterns/appfactories/
+
+EXCEPTIONS:
+    This file holds all the exceptions that can be thrown. It is fairly straightforward
+
+SERVERS: https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-apps-using-gunicorn-http-server-behind-nginx
+
+    GREEN_UNICORN:
+        Used to run wsgi apps. Some dynamic code is in there to determine what port to
+        run the app on, and also to run as a daemon or not.
+        gunicorn is started in tandem with nginx in the runserver bash command located in abcss/abcss_ws/etc/scripts
+
+        the actual config file contains documentation in comments.
+
+    NGINX:
+        Http proxy server used to allow clients to make indirect connections to the two wsgi apps being hosted by guinicorn. And to host the
+        static content. Also adds the no-cache header to all api requests and handles ssl cert.
+
+    IMPORTANT: manage.py is the file used by nginx to start the server it looks at environment variables set by the script runserver.
+
+MODIFICATION INSTRUCTIONS:
+
+    Add Endpoint:
+        to create an endpoint use an established endpoint as a base and build from there
+            - if the endpoint is not related to threat or user documents then create a new file containing
+                - fields.py
+                - models.py
+                - views.py
+                - other files that apply
+            - all endpoints should be put in a views folder
+            - you may need to add to the fields file to deserialize requests and serialize responses
+            - you may need to create a new Document in the database do this in the models file
+            - the API endpoint's route now has to be registered in the factory file.
+
+    Add Test:
+        to test an endpoint navigate to the test_suite
+        - if the endpoint you are testing does not have a folder relating to its
+          document in the database then create one
+        - add your tests to the file tests.py
+            - extend the base clase BaseAPITest
+            https://pythonhosted.org/Flask-Testing/
+
+TODO:
+    - Add logger
+    - Protect threats post endpoint via basic auth http://flask.pocoo.org/snippets/8/

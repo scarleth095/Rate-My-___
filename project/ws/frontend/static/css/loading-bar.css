@@ -1,0 +1,71 @@
+
+#loading-bar, #loading-bar-spinner {
+  pointer-events: none;
+  transition: all 50ms linear 0s;
+}
+#loading-bar.ng-enter, #loading-bar.ng-leave.ng-leave-active, #loading-bar-spinner.ng-enter, #loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+#loading-bar.ng-enter.ng-enter-active, #loading-bar.ng-leave, #loading-bar-spinner.ng-enter.ng-enter-active, #loading-bar-spinner.ng-leave {
+  opacity: 1;
+}
+#loading-bar .bar {
+  background: none repeat scroll 0 0 #29d;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+  height: 10px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: width 350ms ease 0s;
+  width: 100%;
+  z-index: 10002;
+}
+#loading-bar .peg {
+  border-radius: 100%;
+  box-shadow: 1px 0 6px 1px #29d;
+  height: 10px;
+  opacity: 0.45;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70px;
+}
+#loading-bar-spinner {
+  display: block;
+  left: 185px;
+  position: fixed;
+  top: 15px;
+  z-index: 10002;
+}
+#loading-bar-spinner .spinner-icon {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  animation: 400ms linear 0s normal none infinite loading-bar-spinner;
+  border-color: #29d transparent transparent #29d;
+  border-image: none;
+  border-radius: 50%;
+  border-right: 2px solid transparent;
+  border-style: solid;
+  border-width: 4px;
+  height: 30px;
+  width: 30px;
+}
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

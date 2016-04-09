@@ -1,0 +1,139 @@
+(IMPORTANT) The angularjs frontend is intitially being served by a flask wsgi app. When you add new pages make sure you add the
+new link to the frontend views so it can correctly be served by our Angularjs app
+
+    RELEVANT CODE: abcss/abcss_ws/frontend/views.py
+
+STRUCTURE: https://github.com/johnpapa/angular-styleguide
+    John Papa is the GOAT of angular. Attempt to find code examples and explanations from him.
+    Look over his code examples for ideas my application layout and code is heavily influenced by him.
+    code-samples: https://github.com/johnpapa/ng-demos/tree/master/modular/src/client/app
+    NOTE: He has a intro course that is free for 10 days http://www.pluralsight.com/author/john-papa fairly useful in understanding some concepts.
+
+STYLE:
+    If extending this library please mimic the style of current controllers, factories, etc. After looking through the code for a bit it will
+    be apparent as to what is meant by this
+
+    4 POINTS.
+        1. (IMPORTANT) http://stackoverflow.com/questions/11605917/this-vs-scope-in-angularjs-controllers I use this in my controller
+        2. (IMPORTANT) I inject into my functions using .$inject
+        3. (IMPORTANT) wrap javascript files in Immediately Invoked Function Expression (IIFE)
+            http://benalman.com/news/2010/11/immediately-invoked-function-expression/
+            TLDR: Prevents namespace clashes
+        4. (IMPORTANT) Define functions before you call them. I stray away from this a bit in some places but it makes for more
+            readable code.
+
+CIRCULAR DEPENDENCY:
+    There are some. They stink. The ones that exist seem to be unavoidable and related to the angular toastr library.
+    If run into try like hell to get rid of it. If it is an unavoidable consequence of a library you are using either A.
+    drop the library and look elsewhere. or B. If the library is irreplaceable then read this.
+        https://github.com/Foxandxss/angular-toastr/issues/1 scroll down until you find the circular dependency issue
+
+SUGGESTIONS:
+    - Develop in Webstorm it has great support for angular.
+    - Test everything in firefox and use the firebug addon to do so.
+
+KEY FEATURES:
+    TOKENS: https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
+            https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+
+        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/core/authinterceptor.js
+                       abcss/abcss_ws/frontend/static/js/app.config.js (implements authinterceptor)
+
+        Great blog post explaining the benefits of tokens over cookies. Also provides explanation of implementing an AuthInterceptor to add
+        an Authorization header to all API calls from the webapp.
+
+    ACCESS CONTROL: https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+
+        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/core/authservice
+                       abcss/abcss_ws/frontend/static/js/app.run.js (implements authservice)
+
+        "Authorization a.k.a. access control in AngularJS doesn’t really exist. Since we’re talking about a client-side application,
+        all of the source code is in the client’s hands. There’s nothing preventing the user from tampering with that code to gain ‘access’
+        to certain views and interface elements. All we can really do is visibility control. If you need real authorization
+        you’ll have to do it server-side, but that’s beyond the scope of this article." - Gert Hengeveld
+
+        Server side authorization is done through API tokens. Hypothetically if a user who doesn't have valid credentials
+        to view a page modifies his client side code so that he can access the view, No relevant data will be loaded since he can't
+        modify his token to fool the server side code into giving him information he doesn't have the right to access.
+
+    DATA_SERVICE: No real link here this is a concept from John Papa so if you've reached this point of the walkthrough you should be aware
+        of what the dataservice module does. The DATA_SERVICE module makes use of promises via http to get data from the API endpoints.
+        promises are weird and take a little bit of time to wrap your head around. Here is a good link explaining them.
+
+        NOTE: One confusion is that even after catching thrown errors the promise chain will persist.
+
+        PROMISES:   http://www.html5rocks.com/en/tutorials/es6/promises/#toc-chaining
+                    http://www.html5rocks.com/en/tutorials/es6/promises/#toc-error-handling
+
+                RELEVANT_CODE:
+                    abcss/abcss_ws/frontend/static/js/core/storageservice.js
+                    lots of dashboard controllers use .then to continue chaining and processing information after receiving it from
+                    the data service.
+                    the routing resolve uses promises. This is discussed in the links provided in the ROUTING SECTION
+
+    ROUTING: https://github.com/angular-ui/ui-router/wiki
+
+        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/dashboard/config.route.js
+                       abcss/abcss_ws/frontend/static/js/login/config.route.js
+                       abcss/abcss_ws/blocks/router
+
+        The documentation is really good for this so no elaboration.
+
+        I have a routerHelperProvider code borrowed from here: https://github.com/marklagendijk/ui-router.stateHelper
+        (IMPORTANT) Understand child states https://github.com/angular-ui/ui-router/wiki/Nested-States-and-Nested-Views
+        (IMPORTANT) Understand Resolve https://github.com/angular-ui/ui-router/wiki#resolve
+
+    STORAGE_SERVICE: https://github.com/gsklee/ngStorage
+
+        No explanation needed. Reading the code is enough to understand whats happening.
+
+        NOTE: realizing the difference between sessionStorage and localStorage is necessary. Session data is only accessible by the tab it
+            was set in.
+
+        RELEVANT_CODE: pretty much everywhere the whole project makes use of hml5 storage
+
+    DIRECTIVE & FILTERS: Add custom directives and filters here
+
+    TZSERVICE: returns users timezone based off of computer clock
+
+
+MODIFICATION INSTRUCTIONS:
+
+    IMPORTANT: Heart of and angular app is its index.html file. Add new libraries css code and js code there.
+
+    Add js Library:
+        - download the library and add it to the lib file
+        - add a script tag to the index.html in the lib section
+
+    ADD new webpage:
+        - add pages html to the template folder.
+            -if page is a child view of the dashboard view:
+                - do the view routing in the dashboard/config.route.js
+                - add a controller for the page in the dashboard file.
+                - if you need to change any of the dashboard views scope values from the child view such as
+                   the breadcrumb or page title use this code. Make sure you inject $scope into your controller function.
+                        var vm = $scope.vm;
+                        vm.pageTitle = 'Dashboard';
+                        vm.breadcrumb = '/dashboard';
+                - add your controller js file to the index.html via a script tag in the dashboard section.
+            - if page is not a child view of the dashboard.
+                - create a new file with an appropriate name
+                - create a config.route.js file
+                - create a module file
+                - create a controller file
+                - add all these files to the index.html in a new section with the name of your file via a script tag.
+    ADD error page:
+        - follow the instructions for adding a new web page if the page is not a child view of the dashboard.
+        - modify the authinterceptor code so that on a serviceResponseError if the response_codes returned are not -4 or -5
+            send the client to the error state.
+
+    ADD API endpoint to dataservice:
+        - make sure you understand how promises work
+        - view the code in core/dataservice use the existing methods as a template but replace the link being called with the new
+          api link. Make sure that the http method you are using matches your apis http method.
+        - view controllers and route resolves where the api is being called by the dataservice to fully understand how to make use of the
+          new endpoint.
+
+
+TODO:
+    ADD ERROR PAGE.
