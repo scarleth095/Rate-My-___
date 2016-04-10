@@ -2,10 +2,13 @@
 
 url POST: /api/posts/post/create
 
+
+HEADER
+    UID = user id
+    Authorization = token value
+
 Request:
 {
-    "uid": 2,
-    "token": "123421221",
     "title": "This is my new post",
     "description": "Its a greate post",
     "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",

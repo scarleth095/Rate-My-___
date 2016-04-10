@@ -16,7 +16,6 @@ class PostRequest(ma.Schema):
 
 class PostSchema(ma.Schema):
     pid = fields.Integer()
-    uid = fields.Integer()
     title = fields.String()
     url = fields.String()
     description = fields.String()

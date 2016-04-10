@@ -35,6 +35,6 @@ def api_app_factory(config_filename):
 
     # REGISTER API ROUTES
     api.add_resource(AuthorizedEP, '/auth/facebook')
-    api.add_resource(PostEP, '/posts/post/<int:id>')
+    api.add_resource(PostEP, '/posts/post/<int:id>', '/posts/post/')
     api.init_app(app)
     return app

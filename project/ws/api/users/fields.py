@@ -12,8 +12,8 @@ class UserSchema(ma.Schema):
 
 class PublicUserSchema(ma.Schema):
     uid = fields.Integer()
-    first_name = fields.String()
-    last_name = fields.String()
+    name = fields.String()
+    profile_picture_url = fields.String()
 
 
 class AuthorizeSchema(ma.Schema):

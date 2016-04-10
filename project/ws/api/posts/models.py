@@ -24,7 +24,7 @@ class Tag(db.Document):
 class Post(db.Document):
     """
     """
-    uid = db.StringField()
+    uid = db.IntField(required=True)
     pid = db.SequenceField(required=True, unique=True)
     description = db.StringField()
     title = db.StringField(required=True)
