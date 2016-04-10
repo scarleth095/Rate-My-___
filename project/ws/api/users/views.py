@@ -4,9 +4,8 @@ from flask import jsonify, request, current_app
 import requests
 from flask_restful import Resource
 import json
-
-from models import User
-from fields import UserSchema, AuthorizeSchema
+from api.users.models import User
+from api.users.fields import UserSchema, AuthorizeSchema
 import api.exceptions as exceptions
 
 logger = logging.getLogger('ws_python')

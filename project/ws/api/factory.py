@@ -7,10 +7,10 @@ def api_app_factory(config_filename):
     IMPORT ENDPOINTS AFTER THE SETUP!
     """
     from flask import Flask
-    from core import db, api, ma, oauth
+    from api.core import db, api, ma, oauth
     import logging
     import logging.config
-    from exceptions import register_error_handlers
+    from api.exceptions import register_error_handlers
 
     # =====================SETUP====================================== #
 
@@ -30,8 +30,8 @@ def api_app_factory(config_filename):
 
     # =====================ROUTING SETUP============================= #
 
-    from users.views import AuthorizedEP
-    from posts.views import PostEP
+    from api.users.views import AuthorizedEP
+    from api.posts.views import PostEP
 
     # REGISTER API ROUTES
     api.add_resource(AuthorizedEP, '/auth/facebook')

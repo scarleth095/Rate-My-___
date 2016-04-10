@@ -2,10 +2,9 @@ import logging
 
 from flask import jsonify, request
 from flask_restful import Resource
-import json
 import api.exceptions as exceptions
-from fields import PostSchema, PostRequest
-from models import Post, Tag
+from api.posts.fields import PostSchema, PostRequest
+from api.posts.models import Post, Tag
 from api.users.models import User
 from api.users.auth import Auth
 from api.users.fields import PublicUserSchema

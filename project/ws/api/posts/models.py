@@ -2,8 +2,6 @@ import logging
 
 from api.core import db
 import api.utils as utils
-from flask import current_app
-import api.exceptions as exceptions
 
 logger = logging.getLogger('ws_python')
 

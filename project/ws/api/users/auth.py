@@ -4,7 +4,7 @@ import logging
 from flask import request
 
 import api.exceptions as exceptions
-from models import User
+from api.users.models import User
 
 logger = logging.getLogger('abcss_ws_python')
 

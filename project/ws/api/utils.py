@@ -1,6 +1,5 @@
 from dateutil import tz, relativedelta
 import datetime
-from flask import request
 
 def request_args_with_list(request_args):
     """
