@@ -37,8 +37,16 @@ class PostEP(Resource):
     def patch(self):
         pass
 
-    def get(self):
-        pass
+    @Auth.authentication_required()
+    def get(self,id):
+        try:
+            post=Post.objects(pid=id)
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        response = self.post_schema.dump(post)
+        return jsonify(response.data)
+        
+        
 
     def delete(self):
         pass
