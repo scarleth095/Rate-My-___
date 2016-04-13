@@ -39,7 +39,8 @@ class PostEP(Resource):
 
         return jsonify({"post": response_post.data, "user": response_user.data})
 
-    def patch(self):
+    @Auth.authentication_required()
+    def patch(self, id):
         pass
 
     @Auth.authentication_required()
@@ -54,5 +55,11 @@ class PostEP(Resource):
 
         return jsonify({"post": response_post.data, "user": response_user.data})
 
-    def delete(self):
-        pass
+    @Auth.authentication_required()
+    def delete(self, id):
+        try:
+            post_object = Post.objects.get(pid=id)
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        User.objects.get(uid=post_object.uid).delete()
+        return jsonify({})
