@@ -1,4 +1,4 @@
-from . import frontend
+from frontend import frontend
 from flask import make_response
 
 @frontend.route('/')
