@@ -12,7 +12,6 @@ from api.users.fields import PublicUserSchema
 logger = logging.getLogger('ws_python')
 
 
-
 class PostEP(Resource):
     def __init__(self):
         self.post_schema = PostSchema()
