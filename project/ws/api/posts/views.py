@@ -20,25 +20,6 @@ class PostEP(Resource):
         super(PostEP, self).__init__()
 
     @Auth.authentication_required()
-    def post(self):
-        args = self.post_request.load(request.get_json())
-        if args.errors:
-            raise exceptions.InvalidRequest(args.errors)
-        uid = request.headers['UID']
-        post_object = Post.objects.create(
-                uid=uid,
-                title=args.data['title'],
-                url=args.data['url'],
-                description=args.data['description'],
-                tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
-            )
-        user_object = User.objects.get(uid=uid)
-        response_post = self.post_schema.dump(post_object)
-        response_user = self.user_schema.dump(user_object)
-
-        return jsonify({"post": response_post.data, "user": response_user.data})
-
-    @Auth.authentication_required()
     def patch(self, id):
         try:
             post_object = Post.objects.get(pid=id)
@@ -79,3 +60,30 @@ class PostEP(Resource):
             raise exceptions.PostDoesNotExist("Post Does Not Exist")
         User.objects.get(uid=post_object.uid).delete()
         return jsonify({})
+
+
+class PostsEP(Resource):
+    def __init__(self):
+        self.post_schema = PostSchema()
+        self.post_request = PostRequest()
+        self.user_schema = PublicUserSchema()
+        super(PostsEP, self).__init__()
+
+    @Auth.authentication_required()
+    def post(self):
+        args = self.post_request.load(request.get_json())
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        uid = request.headers['UID']
+        post_object = Post.objects.create(
+                uid=uid,
+                title=args.data['title'],
+                url=args.data['url'],
+                description=args.data['description'],
+                tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
+            )
+        user_object = User.objects.get(uid=uid)
+        response_post = self.post_schema.dump(post_object)
+        response_user = self.user_schema.dump(user_object)
+
+        return jsonify({"post": response_post.data, "user": response_user.data})
