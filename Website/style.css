@@ -1,6 +1,13 @@
 body{
     background-color: #596673;
 }
+.container1 {
+  min-height: 100%;
+  width: 900px;
+  background-color: #000;
+}
+
+
 .pager a{
     color: indianred;
 }

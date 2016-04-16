@@ -1,0 +1,63 @@
+<div>
+    <div id="page-wrapper" ng-class="{'open': vm.toggle}" ng-cloak>
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar">
+                <li class="sidebar-main">
+                    <a ng-click="vm.toggleSidebar()">
+                        Dashboard
+                        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                    </a>
+                </li>
+                <li class="sidebar-title"><span>NAVIGATION</span></li>
+                <li class="sidebar-list">
+                    <a ui-sref="dashboard.home" ng-click="vm.resetHomeState()">Dashboard <i class="menu-icon fa fa-tachometer"></i></a>
+                </li>
+            </ul>
+        </div>
+        <!-- End Sidebar -->
+
+        <div id="content-wrapper">
+            <div class="page-content">
+
+                <!-- Header Bar -->
+                <div class="row header">
+                    <div class="col-xs-12">
+                        <div class="user pull-right">
+                            <div class="item dropdown" dropdown on-toggle="toggled(open)">
+                                <a href="#" class="dropdown-toggle icon-container" dropdown-toggle>
+                                    <span class="fa fa-user fa-2x"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-header">
+                                        {{vm.name}}
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="link">
+                                        <a href="#" ng-click="vm.logout()">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meta">
+                            <div class="page">
+                                {{vm.pageTitle}}
+                            </div>
+                            <div class="breadcrumb-links">
+                                {{vm.breadcrumb}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Bar -->
+
+                <!-- Main Content -->
+                <div ui-view></div>
+
+            </div><!-- End Page Content -->
+        </div><!-- End Content Wrapper -->
+    </div><!-- End Page Wrapper -->
+</div>
