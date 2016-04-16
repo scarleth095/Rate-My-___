@@ -29,11 +29,11 @@ Add . web_app
 
 RUN cp /web_app/ws/etc/nginx/nginx.conf /etc/nginx/nginx.conf
 
-#
-RUN cp /web_app/ws/etc/scripts/runserver /usr/local/bin/ && chmod u+x,g+x /usr/local/bin/runserver
-RUN cp /web_app/ws/etc/scripts/make_ssl_cert /usr/local/bin/ && chmod u+x,g+x /usr/local/bin/make_ssl_cert
-RUN make_ssl_cert
+
+RUN cp /web_app/ws/etc/scripts/runserver /usr/local/bin/ && chmod u+x,g+x /usr/local/bin/runserver && sed -i -e 's/\r$//' /usr/local/bin/runserver
+RUN cp /web_app/ws/etc/scripts/make_ssl_cert /usr/local/bin/ && chmod u+x,g+x /usr/local/bin/make_ssl_cert && sed -i -e 's/\r$//' /usr/local/bin/make_ssl_cert
 RUN chmod -R +rx /web_app/ws/frontend/static/css && chmod -R +rx /web_app/ws/frontend/static/js/lib
+RUN make_ssl_cert
 # Get pip to download and install requirements
 RUN pip install -r /web_app/ws/requirements.txt
 

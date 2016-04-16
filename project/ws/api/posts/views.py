@@ -34,6 +34,8 @@ class PostEP(Resource):
         post_object.update(description=args.data['description'])
         post_object.update(tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']])
         post_object.update(url=args.data['url'])
+        post_object.save()
+        post_object.reload()
 
         user_object = User.objects.get(uid=uid)
         response_post = self.post_schema.dump(post_object)
