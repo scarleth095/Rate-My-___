@@ -35,7 +35,7 @@ class User(db.Document):
             user = User.objects.get(uid=uid)
         except User.DoesNotExist:
             raise exceptions.InvalidToken("The token was valid but the user "
-                                          + uid +
+                                          + str(uid) +
                                           " was deleted and no longer exist.")
         if uid != data['uid']:
             raise exceptions.InvalidToken(

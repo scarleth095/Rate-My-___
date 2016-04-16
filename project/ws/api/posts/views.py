@@ -58,7 +58,7 @@ class PostEP(Resource):
             post_object = Post.objects.get(pid=id)
         except Post.DoesNotExist:
             raise exceptions.PostDoesNotExist("Post Does Not Exist")
-        User.objects.get(uid=post_object.uid).delete()
+        post_object.delete()
         return jsonify({})
 
 
