@@ -41,7 +41,24 @@ class PostEP(Resource):
 
     @Auth.authentication_required()
     def patch(self, id):
-        pass
+        try:
+            post_object = Post.objects.get(pid=id)
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        uid = request.headers['UID']
+
+        args = self.post_request.load(request.get_json())
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        post_object.update(title=args.data['title'])
+        post_object.update(description=args.data['description'])
+        post_object.update(tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']])
+        post_object.update(url=args.data['url'])
+
+        user_object = User.objects.get(uid=uid)
+        response_post = self.post_schema.dump(post_object)
+        response_user = self.user_schema.dump(user_object)
+        return jsonify({"post": response_post.data, "user": response_user.data})
 
     @Auth.authentication_required()
     def get(self, id):
