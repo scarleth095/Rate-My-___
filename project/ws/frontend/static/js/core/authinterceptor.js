@@ -49,8 +49,7 @@
                     storageservice.clearUID();
                     storageservice.clearName();
                     storageservice.clearToken();
-                    storageservice.resetHomeState();
-                    storageservice.resetThreatsState();
+                    storageservice.clearProfilePicture();
                     $state.go('login');
                 }
                 //else if (response.status != 200){}

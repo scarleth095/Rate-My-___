@@ -10,8 +10,7 @@
 
         var service = {
             authenticate: authenticate,
-            getHomePage: getHomePage,
-
+            getPost: getPost
         };
 
         return service;
@@ -29,18 +28,21 @@
                 storageservice.setToken(data.token);
                 storageservice.setName(data.name);
                 storageservice.setUID(data.uid);
+                storageservice.setProfilePicture(data.profile_picture_url);
                 $state.go('dashboard.home');
             }
         }
 
-        function getHomePage() {
-            return $http.get('/api/home', {
+        function getPost(params) {
+            return $http.get('/api/posts/post/' + params.id, {
                 ignoreLoadingBar: true
             })
                 .then(complete)
                 .catch(function(message) {
+                    $state.go('dashboard.404');
                     exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
                 });
+
             function complete(result) {
                 return result.data
             }

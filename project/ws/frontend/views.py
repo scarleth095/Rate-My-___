@@ -4,9 +4,8 @@ from flask import make_response
 @frontend.route('/')
 @frontend.route('/login')
 @frontend.route('/dashboard')
-@frontend.route('/threat/<threatid>')
-@frontend.route('/threats')
-
+@frontend.route('/post/<postid>')
+@frontend.route('/404')
 def page(**kwargs):
     return make_response(open('frontend/templates/index.html').read())
 

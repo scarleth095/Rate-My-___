@@ -3,10 +3,8 @@
         .module('abcss')
         .run(runapp);
 
-    runapp.$inject = ['$rootScope', 'authservice', 'exception', '$state', 'logger', "storageservice"];
-    function runapp ($rootScope, authservice, exception, $state, logger, storageservice) {
-
-            storageservice.resetHomeState();   //initialize params
+    runapp.$inject = ['$rootScope', 'authservice', 'exception', '$state', 'logger'];
+    function runapp ($rootScope, authservice, exception, $state, logger) {
 
             $rootScope.$on('$stateChangeStart', function (event, next) {
                 //dont need to check login since its a public state and anyone can visit the page

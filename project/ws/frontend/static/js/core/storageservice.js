@@ -16,12 +16,9 @@
             setUID: setUID,
             clearUID: clearUID,
             getUID: getUID,
-            setRole: setRole,
-            clearRole: clearRole,
-            getRole: getRole,
-            setHomeState: setHomeState,
-            resetHomeState: resetHomeState,
-            getHomeState: getHomeState,
+            setProfilePicture: setProfilePicture,
+            clearProfilePicture: clearProfilePicture,
+            getProfilePicture: getProfilePicture
         };
 
         return service;
@@ -76,16 +73,16 @@
         }
 //Keep track of Page State
         //Home state storage
-        function setHomeState(state){
-            $sessionStorage.homeState = state;
+        function setProfilePicture(picture){
+            $sessionStorage.profilePicture = picture;
         }
 
-        function getHomeState(){
-            return $sessionStorage.homeState;
+        function getProfilePicture(){
+            return $sessionStorage.profilePicture;
         }
 
-        function resetHomeState(){
-            $sessionStorage.homeState = {page: 1, count: 10};
+        function clearProfilePicture(){
+            $sessionStorage.profilePicture = null;
         }
     }
 

@@ -23,9 +23,25 @@
                         templateUrl: '/templates/home.html',
                         controller: 'HomeController',
                         controllerAs: 'cm',
-                    }
+                    },
+                    {
+                        name: 'post',
+                        url: '/post/:postid',
+                        templateUrl: '/templates/post.html',
+                        controller: 'PostController',
+                        controllerAs: 'cm',
+                        resolve : {
+                            postdata: function(dataservice, $stateParams) {
+                                return dataservice.getPost({id: $stateParams.postid});
+                            }
+                        }
+                    },
+                    {
+                        name: '404',
+                        url: '/404',
+                        templateUrl: '/templates/404.html',
+                    },
                 ]
             };
     }
-
 })();
