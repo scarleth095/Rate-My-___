@@ -5,8 +5,8 @@
         .module('abcss.dashboard')
         .controller('ProfileController', ProfileController);
 
-    HomeController.$inject = ['dataservice', 'logger'];
-    function ProfileController(dataservice, logger) {
+    ProfileController.$inject = ['dataservice', 'logger','storageservice'];
+    function ProfileController(dataservice, logger,storageservice) {
         var cm = this;
         }
     }
