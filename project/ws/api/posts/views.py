@@ -77,15 +77,23 @@ class PostsEP(Resource):
         if args.errors:
             raise exceptions.InvalidRequest(args.errors)
         uid = request.headers['UID']
-        post_object = Post.objects.create(
-                uid=uid,
-                title=args.data['title'],
-                url=args.data['url'],
-                description=args.data['description'],
-                tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
-            )
+        if ("url" in args.data):
+            post_object = Post.objects.create(
+                    uid=uid,
+                    title=args.data['title'],
+                    url=args.data['url'],
+                    description=args.data['description'],
+                    tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
+                )
+        else:
+           post_object = Post.objects.create(
+                            uid=uid,
+                            title=args.data['title'],
+                            description=args.data['description'],
+                            tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
+                        )
         user_object = User.objects.get(uid=uid)
         response_post = self.post_schema.dump(post_object)
         response_user = self.user_schema.dump(user_object)
 
-        return jsonify({"post": response_post.data, "user": response_user.data})
+        return jsonify({"post": response_post.data})

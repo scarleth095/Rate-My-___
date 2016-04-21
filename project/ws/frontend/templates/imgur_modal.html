@@ -2,9 +2,16 @@
     <h1 class="modal-title">Upload Image</h1>
 </div>
 <div class="modal-body">
-    <section class="drop" imgurdrop>
-        <h2>Drop an Image</h2>
-    </section>
+    <div ng-if="!uploaded">
+            <section class="drop" imgurdrop drop="handleDrop">
+                <h2>{{message}}</h2>
+            </section>
+    </div>
+    <div ng-if="uploaded">
+        <section class="drop">
+            <h2>{{message}}</h2>
+        </section>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>

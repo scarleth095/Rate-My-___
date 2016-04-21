@@ -11,7 +11,8 @@
         var service = {
             authenticate: authenticate,
             getPost: getPost,
-            getTags: getTags
+            getTags: getTags,
+            createPost: createPost
         };
 
         return service;
@@ -47,6 +48,19 @@
             function complete(result) {
                 return result.data
             }
+        }
+
+        function createPost(args) {
+            return $http.post('/api/posts', args).then(complete)
+                .catch(function(message) {
+                    $state.go('dashboard.404');
+                    exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
+                });
+
+            function complete(result) {
+                $state.go('dashboard.post',{ postid: result.data.post.pid });
+            }
+
         }
 
         function getTags() {
