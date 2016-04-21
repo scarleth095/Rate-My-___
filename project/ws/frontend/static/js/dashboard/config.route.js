@@ -22,7 +22,7 @@
                         url: '/dashboard',
                         templateUrl: '/templates/home.html',
                         controller: 'HomeController',
-                        controllerAs: 'cm',
+                        controllerAs: 'cm'
                     },
                     {
                         name: 'post',
@@ -41,13 +41,13 @@
                         url: '/create',
                         templateUrl: '/templates/create.html',
                         controller: 'CreateController',
-                        controllerAs: 'cm',
+                        controllerAs: 'cm'
                     },
                     {
                         name: '404',
                         url: '/404',
-                        templateUrl: '/templates/404.html',
-                    },
+                        templateUrl: '/templates/404.html'
+                    }
                 ]
             };
     }

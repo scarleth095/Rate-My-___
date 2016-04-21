@@ -51,6 +51,7 @@
         // by default, the redirect URI is http://localhost:5000
         redirectUri: location.origin + location.pathname
         });
+        $authProvider.httpInterceptor = false;
     }
 
 })();

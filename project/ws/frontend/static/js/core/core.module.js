@@ -13,6 +13,6 @@
         /*
          * 3rd Party modules
          */
-        'ngplus', 'ui.bootstrap', 'ngStorage', 'ngTagsInput', 'oi.select', 'angular-loading-bar', 'satellizer'
+        'ngplus', 'ui.bootstrap', 'ngStorage', 'ngTagsInput', 'oi.select', 'angular-loading-bar', 'satellizer', 'ngImgur'
     ]);
 })();

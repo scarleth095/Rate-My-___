@@ -18,20 +18,20 @@
             service.responseError = serviceResponseError;
 
             function serviceRequest (config) {
-
                 // inject modules to avoid circular dependency
                 storageservice = $injector.get('storageservice');
-
-
-                var token = storageservice.getToken();
-                var uid = storageservice.getUID();
-                config.headers = config.headers || {};
-                if (token !== null || token !== undefined) {
-                    config.headers.Authorization = token;
-                }
-
-                if (uid !== null || uid !== undefined) {
-                    config.headers.UID = uid;
+                var url = config.url;
+                var api = "/api/";
+                if (url.lastIndexOf(api, 0) === 0) {
+                    var token = storageservice.getToken();
+                    var uid = storageservice.getUID();
+                    config.headers = config.headers || {};
+                    if (token !== null || token !== undefined) {
+                        config.headers.Authorization = token;
+                    }
+                    if (uid !== null || uid !== undefined) {
+                        config.headers.UID = uid;
+                    }
                 }
 
                 return config;
@@ -43,14 +43,17 @@
                 storageservice = $injector.get('storageservice');
                 $state = $injector.get('$state');
                 $q = $injector.get('$q');
-                var response_code = response.data.code || null;
-
-                if (response_code === -4 || response_code === -5) {
-                    storageservice.clearUID();
-                    storageservice.clearName();
-                    storageservice.clearToken();
-                    storageservice.clearProfilePicture();
-                    $state.go('login');
+                var url = response.config.url;
+                var api = "/api/";
+                if (url.lastIndexOf(api, 0) === 0) {
+                    var response_code = response.data.code || null;
+                    if (response_code === -4 || response_code === -5) {
+                        storageservice.clearUID();
+                        storageservice.clearName();
+                        storageservice.clearToken();
+                        storageservice.clearProfilePicture();
+                        $state.go('login');
+                    }
                 }
                 //else if (response.status != 200){}
 
