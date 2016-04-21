@@ -44,6 +44,13 @@
                         controllerAs: 'cm'
                     },
                     {
+                        name: 'profile',
+                        url: '/profile',
+                        templateUrl: '/templates/profile.html',
+                        controller: 'ProfileController',
+                        controllerAs: 'cm'
+                    },
+                    {
                         name: '404',
                         url: '/404',
                         templateUrl: '/templates/404.html'
