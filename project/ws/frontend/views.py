@@ -5,7 +5,9 @@ from flask import make_response
 @frontend.route('/login')
 @frontend.route('/dashboard')
 @frontend.route('/post/<postid>')
+@frontend.route('/create')
 @frontend.route('/404')
+
 def page(**kwargs):
     return make_response(open('frontend/templates/index.html').read())
 

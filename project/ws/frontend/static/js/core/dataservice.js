@@ -5,12 +5,13 @@
         .module('abcss.core')
         .factory('dataservice', dataservice);
 
-    dataservice.$inject = ['$http', 'exception', 'storageservice', '$state', 'logger', '$auth'];
-    function dataservice($http, exception, storageservice, $state, logger, $auth) {
+    dataservice.$inject = ['$http', 'exception', 'storageservice', '$state', 'logger', '$auth', '$q'];
+    function dataservice($http, exception, storageservice, $state, logger, $auth, $q) {
 
         var service = {
             authenticate: authenticate,
-            getPost: getPost
+            getPost: getPost,
+            getTags: getTags
         };
 
         return service;
@@ -46,6 +47,26 @@
             function complete(result) {
                 return result.data
             }
+        }
+
+        function getTags() {
+            var tags = [
+                { "text": "Tag1" },
+                { "text": "Tag2" },
+                { "text": "Tag3" },
+                { "text": "Tag4" },
+                { "text": "Tag5" },
+                { "text": "Tag6" },
+                { "text": "Tag7" },
+                { "text": "Tag8" },
+                { "text": "Tag9" },
+                { "text": "Tag10" }
+                ];
+
+
+            var deferred = $q.defer();
+            deferred.resolve(tags);
+            return deferred.promise;
         }
     }
 })();
