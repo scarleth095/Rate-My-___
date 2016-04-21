@@ -83,6 +83,7 @@ body{
     background-color: #232323;
     color: white;
     border-radius: 15%;
+    margin-top: 10px;
 }
 .carousel-control.left, .carousel-control.right {
     background-image: none
@@ -171,7 +172,7 @@ font-family: 'Poiret One', cursive;
 .full-black{
     background-color: black;
     width: 100%;
-    color: white;
+    color: white !important;
     margin-top: -25px;
     text-align: center;
     border-radius: 20px;
@@ -203,7 +204,7 @@ font-family: 'Poiret One', cursive;
 .full-red{
     background-color: indianred;
     width: 100%;
-    color: white;
+    color: white !important;
     margin-top: -25px;
     text-align: center;
     border-radius: 20px;
