@@ -17,6 +17,7 @@ class PostRequest(ma.Schema):
 class PostSchema(ma.Schema):
     pid = fields.Integer()
     title = fields.String()
+    created = fields.DateTime()
     url = fields.Url()
     description = fields.String()
     tags = fields.Nested(TagSchema, many=True)
