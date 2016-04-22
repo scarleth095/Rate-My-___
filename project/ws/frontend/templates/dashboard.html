@@ -17,39 +17,33 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li >
                         <a href="#">
-                            <i class="fa fa-home fa-lg"></i>
-                            Home
+                            <i class="fa fa-home fa-lg"></i> 
+                            <font face="Roboto"> Home </font>
                         </a>
                     </li>
-                    <!--
-                    <li class="dropdown" dropdown on-toggle="toggled(open)">
-                        <a href="#" class="dropdown-toggle icon-container" dropdown-toggle>
-                             <i class="fa fa-bell fa-lg"></i>
-                            <span class="badge">42</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-comments"></i>
-                                        1 new comment
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-                    -->
                     <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
                         <a href="#" class="dropdown-toggle icon-container" uib-dropdown-toggle>
                             <img class="img-rounded profile-image" height="45px" width="45px"alt="Brand" ng-src="{{vm.profile_picture}}">
-                            {{vm.name}}&nbsp;
+                            &nbsp; <font face="Roboto">{{vm.name}} </font>&nbsp;
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" ng-click="vm.logout()">
-                                     <i class="fa fa-sign-out"></i> Logout
+                                <a href="#" ng-click="">
+                                     <i class="fa fa-user "></i>&nbsp; Profile
                                 </a>
                             </li>
+                            <li>
+                                <a href="#" ng-click="">
+                                     <i class="fa fa-plus "></i>&nbsp; Create Post
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" ng-click="vm.logout()">
+                                     <i class="fa fa-sign-out "></i>&nbsp; Logout
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                 </ul>
@@ -66,12 +60,7 @@
         </div>
     </div>
 </nav>
-<p class="pad"> &nbsp;</p>
+
 <section>
-    <div id="wrapper" class="clear ">
-        <div class="container-fluid">
-            <!-- Main Content -->
-            <div ui-view></div>
-        </div><!-- End Page Content -->
-   </div><!-- End Content Wrapper -->
+    <div ui-view></div>
 </section>

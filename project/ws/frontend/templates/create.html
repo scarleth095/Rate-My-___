@@ -1,6 +1,13 @@
+
+
+<p class="pad"> &nbsp;</p>
+   <div class="container-fluid">
+    <p class="pad"> &nbsp;</p>   
+<div id="wrapper" class="clear">
 <div class="row">
-    <div col-lg-5>
-        <h1 class="title" class="col-lg-3">Create a New Post</h1>
+        <p class="pad"> &nbsp;</p>  
+    <div class="full-red2">
+        <center> <h1 class="title" class="col-lg-3"><font color="white">Create a New Post</font></h1> </center>
     </div>
 </div>
 <div class="row">
@@ -8,16 +15,16 @@
     <div class="col-lg-8">
         <form>
             <fieldset class="form-group">
-                <label for="title">Title</label>
+                <label for="title"><font size="4px" class="title">Title</font></label>
                 <input type="text" class="form-control" id="title" ng-model="cm.title">
             </fieldset>
             <fieldset class="form-group">
-                <label for="description">Description</label>
+                <label for="description"><font size="4px" class="title">Description</font></label>
                 <textarea ng-model="cm.description" class="form-control" id="description" style="height: 180px;"></textarea>
              </fieldset>
             <fieldset class="form-group">
                 <div class="input-group tags-edit">
-                    <span class="input-group-addon">Tags</span>
+                    <span class="input-group-addon"><font class="title">Tags</font></span>
                     <tags-input ng-model="cm.tags" class="ti-input-sm">
                         <auto-complete source="cm.loadTags($query)"></auto-complete>
                     </tags-input>
@@ -25,7 +32,7 @@
             </fieldset>
             <div ng-if="!cm.imgur_uploaded">
                 <fieldset class="form-group">
-                    <button type="button" class="btn btn-default" ng-click="cm.openImgurModal()">Add Image</button>
+                    <button type="button" class="btn btn-default" ng-click="cm.openImgurModal()"><font class="title">Add Image</font></button>
                 </fieldset>
             </div>
             <div ng-if="cm.imgur_uploaded">
@@ -33,6 +40,8 @@
             </div>
             <input type="submit" class="btn btn-info" ng-click="cm.createPost()" value="Create Post" />
         </form>
+    </div>
+    </div>
     </div>
     <div class="col-lg-2"></div>
 </div>
