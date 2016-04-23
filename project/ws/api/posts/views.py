@@ -3,7 +3,7 @@ import logging
 from flask import jsonify, request
 from flask_restful import Resource
 import api.exceptions as exceptions
-from api.posts.fields import PostSchema, PostRequest, RatingRequest, RatingSchema, CommentRequest, CommentSchema
+from api.posts.fields import PostSchema, PostSearchSchema, PostRequest, RatingRequest, RatingSchema, CommentRequest, CommentSchema, SearchRequest
 from api.posts.models import Post, Tag, Rating
 from api.users.models import User
 from api.users.auth import Auth
@@ -61,8 +61,11 @@ class PostEP(Resource):
 class PostsEP(Resource):
     def __init__(self):
         self.post_schema = PostSchema()
+        self.post_search_schema = PostSearchSchema(many=True)
         self.post_request = PostRequest()
         self.user_schema = PublicUserSchema()
+        self.search_request = SearchRequest()
+        self.items_per_page = 6
         super(PostsEP, self).__init__()
 
     @Auth.authentication_required()
@@ -84,7 +87,7 @@ class PostsEP(Resource):
                     tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
                 )
         else:
-           post_object = Post.objects.create(
+            post_object = Post.objects.create(
                             user=user_object,
                             title=args.data['title'],
                             description=args.data['description'],
@@ -92,6 +95,25 @@ class PostsEP(Resource):
                         )
         response_post = self.post_schema.dump(post_object)
         return jsonify({"post": response_post.data})
+
+    @Auth.authentication_required()
+    def get(self):
+        args = self.search_request.load(request.args)
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        if "search_field" in args.data:
+            search_text = args.data['search_field']
+            search_result = Post.objects.search_text(search_text).order_by('$weights')
+            offset = (args.data['page'] - 1) * self.items_per_page
+            paginate_search_results = search_result.skip(offset).limit(self.items_per_page)
+            response_posts = self.post_search_schema.dump(paginate_search_results)
+            return jsonify({"posts": response_posts})
+        else:
+            offset = (args.data['page'] - 1) * self.items_per_page
+            paginate_search_results = Post.objects.order_by('-created').skip(offset).limit(self.items_per_page)
+            response_posts = self.post_search_schema.dump(paginate_search_results)
+            return jsonify({"posts": response_posts})
+
 
 
 class RatingEP(Resource):
@@ -121,7 +143,6 @@ class RatingEP(Resource):
         response_my_rating = self.rating_schema.dump(rating)
         response_post_rating = post_object.get_rating()
         return jsonify({"my_rating": response_my_rating.data, "post_rating": response_post_rating})
-
 
     def get(self):
         args = self.rating_request.load(request.args)
@@ -164,9 +185,4 @@ class CommentEP(Resource):
         post_object.save()
         response_comment = self.comment_schema.dump(comment)
         return jsonify({"comment": response_comment})
-
-
-
-
-
 

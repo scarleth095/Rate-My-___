@@ -47,6 +47,13 @@ class Post(db.Document):
     comments = db.EmbeddedDocumentListField(Comment, default=[])
     url = db.URLField()
 
+    meta = {'indexes': [
+        {'fields': ['$title', "$description", '$tags'],
+         'default_language': 'english',
+         'weights': {'title': 10, 'description': 5, 'tags': 2}
+         }
+    ]}
+
     def get_rating(self):
         aggregate_rating = 0
         count = 0
@@ -57,4 +64,5 @@ class Post(db.Document):
             return 0
         else:
             return aggregate_rating/count
+
 
