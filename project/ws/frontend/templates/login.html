@@ -5,7 +5,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 form-box">
-                    <h1><strong>Rate My</strong> Blank</h1>
+                    <h1><strong>Rate My</strong>
+                        <span id="blank" style="display:none;color:white;"> Blank</span>
+                        <span id="1" style="display:none;color:white;"> Video</span>
+                        <span id="2" style="display:none;color:white;"> Outfit</span>
+                        <span id="3" style="display:none;color:white;"> Story</span>
+                        <span id="4" style="display:none;color:white;"> Design</span>
+                        <span id="dots" style="display:none;color:white;"> ... </span>
+                    
+                    </h1>
                 </div>
             </div>
             <div class="row">
@@ -30,5 +38,29 @@
         </div>
     </div>
 </div>
-
+<script>
+$(document).ready(function(){
+    $("#dots").fadeIn(2000,function(){
+        $("#dots").fadeOut(1000,function(){
+            $("#1").fadeIn(2000,function(){
+                $("#1").fadeOut(1000,function(){
+                     $("#2").fadeIn(2000,function(){
+                         $("#2").fadeOut(1000,function(){
+                             $("#3").fadeIn(2000,function(){
+                                 $("#3").fadeOut(1000,function(){
+                                     $("#4").fadeIn(2000,function(){
+                                          $("#4").fadeOut(1000,function(){
+                                               $("#blank").fadeIn(2000);
+                                          });
+                                     });
+                                 });
+                             });
+                         });
+                     });
+                });
+            });
+        });
+    });
+});
+</script>
 
