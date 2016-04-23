@@ -11,6 +11,7 @@
             var $q;
             var storageservice;
             var $state;
+            var authservice;
 
             var service = this;
 
@@ -26,10 +27,10 @@
                     var token = storageservice.getToken();
                     var uid = storageservice.getUID();
                     config.headers = config.headers || {};
-                    if (token !== null || token !== undefined) {
+                    if (token !== null && token !== undefined) {
                         config.headers.Authorization = token;
                     }
-                    if (uid !== null || uid !== undefined) {
+                    if (uid !== null && uid !== undefined) {
                         config.headers.UID = uid;
                     }
                 }
@@ -43,6 +44,7 @@
                 storageservice = $injector.get('storageservice');
                 $state = $injector.get('$state');
                 $q = $injector.get('$q');
+                authservice = $injector.get('authservice')
                 var url = response.config.url;
                 var api = "/api/";
                 if (url.lastIndexOf(api, 0) === 0) {
@@ -54,7 +56,7 @@
                         storageservice.clearProfilePicture();
                         $state.go('login');
                     }
-                    else {
+                    else if(authservice.isAuthenticated()) {
                         $state.go('dashboard.404');
                     }
                 }

@@ -123,6 +123,24 @@ class RatingEP(Resource):
         return jsonify({"my_rating": response_my_rating.data, "post_rating": response_post_rating})
 
 
+    def get(self):
+        args = self.rating_request.load(request.args)
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        try:
+            post_object = Post.objects.get(pid=args.data['pid'])
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        uid = request.headers['UID']
+        rating = post_object.ratings.filter(uid=uid)
+        logger.debug(rating.count())
+        if rating.count() == 0:
+            rating = -1
+        else:
+            rating = rating[0].rating
+        return jsonify({'rating': rating})
+
+
 class CommentEP(Resource):
     def __init__(self):
         self.comment_request = CommentRequest()

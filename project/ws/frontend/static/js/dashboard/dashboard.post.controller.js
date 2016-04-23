@@ -5,12 +5,12 @@
         .module('abcss.dashboard')
         .controller('PostController', PostController);
 
-    PostController.$inject = ['postdata', 'dataservice', 'logger', '$scope'];
-    function PostController(postdata, dataservice, logger, $scope) {
+    PostController.$inject = ['postdata', 'userratingdata', 'dataservice', 'logger', '$scope'];
+    function PostController(postdata, userratingdata, dataservice, logger, $scope) {
         var cm = this;
         cm.post = postdata.post;
         cm.rating = postdata.rating;
-        cm.my_rating = 5;
+        cm.my_rating = userratingdata.rating;
         cm.rating_max = 5;
         cm.url_null = (cm.post.url === null);
         cm.getSelectedRating = getSelectedRating;

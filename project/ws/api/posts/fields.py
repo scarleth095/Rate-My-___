@@ -46,6 +46,6 @@ class PostSchema(ma.Schema):
 
 class RatingRequest(ma.Schema):
     pid = fields.Integer(required=True)
-    rating = fields.Integer(required=True, validate=lambda n: 0 <= n <= 5)
+    rating = fields.Integer(validate=lambda n: 0 <= n <= 5)
 
 

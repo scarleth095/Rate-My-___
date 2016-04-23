@@ -13,7 +13,8 @@
             getPost: getPost,
             getTags: getTags,
             createPost: createPost,
-            updateRating: updateRating
+            updateRating: updateRating,
+            getRating: getRating
         };
 
         return service;
@@ -37,7 +38,7 @@
         }
 
         function getPost(params) {
-            return $http.get('/api/posts/post/' + params.id, {
+            return $http.get('/api/posts/post/' + params.pid, {
                 ignoreLoadingBar: true
             })
                 .then(complete)
@@ -64,6 +65,17 @@
 
         function updateRating(args){
             return $http.post('/api/ratings', args).then(complete)
+                .catch(function(message) {
+                    exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
+                });
+
+            function complete(result) {
+                return result.data;
+            }
+        }
+
+        function getRating(args) {
+            return $http.get('/api/ratings', {params: args}).then(complete)
                 .catch(function(message) {
                     exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
                 });

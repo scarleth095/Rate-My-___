@@ -32,7 +32,10 @@
                         controllerAs: 'cm',
                         resolve : {
                             postdata: function(dataservice, $stateParams) {
-                                return dataservice.getPost({id: $stateParams.postid});
+                                return dataservice.getPost({pid: $stateParams.postid});
+                            },
+                            userratingdata: function(dataservice, $stateParams) {
+                                return dataservice.getRating({pid: $stateParams.postid});
                             }
                         }
                     },
