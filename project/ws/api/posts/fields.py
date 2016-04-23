@@ -1,6 +1,7 @@
 from marshmallow import fields, validate
 
 from api.core import ma
+from api.users.fields import PublicUserSchema
 
 
 class TagSchema(ma.Schema):
@@ -14,10 +15,37 @@ class PostRequest(ma.Schema):
     tags = fields.Nested(TagSchema, many=True)
 
 
+class RatingSchema(ma.Schema):
+    pid = fields.Integer()
+    uid = fields.Integer()
+    rating = fields.Integer()
+
+
+class CommentRequest(ma.Schema):
+    pid = fields.Integer()
+    comment = fields.String()
+
+
+class CommentSchema(ma.Schema):
+    user = fields.Nested(PublicUserSchema)
+    pid = fields.Integer()
+    comment = fields.String()
+    created = fields.DateTime()
+
+
 class PostSchema(ma.Schema):
+    user = fields.Nested(PublicUserSchema)
     pid = fields.Integer()
     title = fields.String()
     created = fields.DateTime()
     url = fields.Url()
     description = fields.String()
     tags = fields.Nested(TagSchema, many=True)
+    comments = fields.Nested(CommentSchema, many=True)
+
+
+class RatingRequest(ma.Schema):
+    pid = fields.Integer(required=True)
+    rating = fields.Integer(required=True, validate=lambda n: 0 <= n <= 5)
+
+

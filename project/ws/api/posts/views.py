@@ -3,8 +3,8 @@ import logging
 from flask import jsonify, request
 from flask_restful import Resource
 import api.exceptions as exceptions
-from api.posts.fields import PostSchema, PostRequest
-from api.posts.models import Post, Tag
+from api.posts.fields import PostSchema, PostRequest, RatingRequest, RatingSchema, CommentRequest, CommentSchema
+from api.posts.models import Post, Tag, Rating
 from api.users.models import User
 from api.users.auth import Auth
 from api.users.fields import PublicUserSchema
@@ -21,15 +21,13 @@ class PostEP(Resource):
 
     @Auth.authentication_required()
     def patch(self, id):
+        args = self.post_request.load(request.get_json())
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
         try:
             post_object = Post.objects.get(pid=id)
         except Post.DoesNotExist:
             raise exceptions.PostDoesNotExist("Post Does Not Exist")
-        uid = request.headers['UID']
-
-        args = self.post_request.load(request.get_json())
-        if args.errors:
-            raise exceptions.InvalidRequest(args.errors)
         post_object.update(title=args.data['title'])
         post_object.update(description=args.data['description'])
         post_object.update(tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']])
@@ -37,10 +35,8 @@ class PostEP(Resource):
         post_object.save()
         post_object.reload()
 
-        user_object = User.objects.get(uid=uid)
         response_post = self.post_schema.dump(post_object)
-        response_user = self.user_schema.dump(user_object)
-        return jsonify({"post": response_post.data, "user": response_user.data})
+        return jsonify({"post": response_post.data})
 
     @Auth.authentication_required()
     def get(self, id):
@@ -48,11 +44,9 @@ class PostEP(Resource):
             post_object = Post.objects.get(pid=id)
         except Post.DoesNotExist:
             raise exceptions.PostDoesNotExist("Post Does Not Exist")
-        user_object = User.objects.get(uid=post_object.uid)
         response_post = self.post_schema.dump(post_object)
-        response_user = self.user_schema.dump(user_object)
-
-        return jsonify({"post": response_post.data, "user": response_user.data})
+        response_rating = post_object.get_rating()
+        return jsonify({"post": response_post.data, "rating": response_rating})
 
     @Auth.authentication_required()
     def delete(self, id):
@@ -77,9 +71,13 @@ class PostsEP(Resource):
         if args.errors:
             raise exceptions.InvalidRequest(args.errors)
         uid = request.headers['UID']
-        if ("url" in args.data):
+        try:
+            user_object = User.objects.get(uid=uid)
+        except User.DoesNotExist:
+            raise exceptions.UserDoesNotExist("User Does Not Exist")
+        if "url" in args.data:
             post_object = Post.objects.create(
-                    uid=uid,
+                    user=user_object,
                     title=args.data['title'],
                     url=args.data['url'],
                     description=args.data['description'],
@@ -87,13 +85,70 @@ class PostsEP(Resource):
                 )
         else:
            post_object = Post.objects.create(
-                            uid=uid,
+                            user=user_object,
                             title=args.data['title'],
                             description=args.data['description'],
                             tags=[Tag.get_or_create(tag['text']) for tag in args.data['tags']]
                         )
-        user_object = User.objects.get(uid=uid)
         response_post = self.post_schema.dump(post_object)
-        response_user = self.user_schema.dump(user_object)
-
         return jsonify({"post": response_post.data})
+
+
+class RatingEP(Resource):
+    def __init__(self):
+        self.rating_request = RatingRequest()
+        self.rating_schema = RatingSchema()
+        super(RatingEP, self).__init__()
+
+    def post(self):
+        args = self.rating_request.load(request.get_json())
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        try:
+            post_object = Post.objects.get(pid=args.data['pid'])
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        uid = request.headers['UID']
+        rating = post_object.ratings.filter(uid=uid)
+        logger.debug(rating.count())
+        if rating.count() == 0:
+            rating = post_object.ratings.create(uid=uid, pid=args.data['pid'], rating=args.data['rating'])
+        else:
+            rating.update(rating=args.data['rating'])
+            rating.save()
+            rating = rating[0]
+        post_object.save()
+        response_my_rating = self.rating_schema.dump(rating)
+        response_post_rating = post_object.get_rating()
+        return jsonify({"my_rating": response_my_rating.data, "post_rating": response_post_rating})
+
+
+class CommentEP(Resource):
+    def __init__(self):
+        self.comment_request = CommentRequest()
+        self.comment_schema = CommentSchema()
+        super(CommentEP, self).__init__()
+
+    def post(self):
+        args = self.comment_request.load(request.get_json())
+        if args.errors:
+            raise exceptions.InvalidRequest(args.errors)
+        try:
+            post_object = Post.objects.get(pid=args.data['pid'])
+        except Post.DoesNotExist:
+            raise exceptions.PostDoesNotExist("Post Does Not Exist")
+        uid = request.headers['UID']
+        try:
+            user_object = User.objects.get(uid=uid)
+        except User.DoesNotExist:
+            raise exceptions.UserDoesNotExist("User Does Not Exist")
+        comment = post_object.comments.create(user=user_object, pid=args.data['pid'], rating=args.data['comment'])
+        post_object.save()
+        response_comment = self.comment_schema.dump(comment)
+        return jsonify({"comment": response_comment})
+
+
+
+
+
+

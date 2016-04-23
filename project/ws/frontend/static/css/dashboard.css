@@ -251,8 +251,6 @@ font-family: 'Poiret One', cursive;
     font-family: 'Poiret One', cursive;
 }
 
-
-
 .badge{
 background-color: indianred;
 }
@@ -315,4 +313,25 @@ background-color: indianred;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+
+ul.rating {
+    display: inline-block !important;
+}
+.rating li {
+    list-style-type: none !important;
+    display: inline-block !important;
+    padding: 1px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+.rating .filled {
+    color: red;
 }

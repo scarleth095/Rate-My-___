@@ -47,15 +47,17 @@
                 var api = "/api/";
                 if (url.lastIndexOf(api, 0) === 0) {
                     var response_code = response.data.code || null;
-                    if (response_code === -4 || response_code === -5) {
+                    if (response_code === -1 || response_code === -3) {
                         storageservice.clearUID();
                         storageservice.clearName();
                         storageservice.clearToken();
                         storageservice.clearProfilePicture();
                         $state.go('login');
                     }
+                    else {
+                        $state.go('dashboard.404');
+                    }
                 }
-                //else if (response.status != 200){}
 
                 return $q.reject(response);
             }

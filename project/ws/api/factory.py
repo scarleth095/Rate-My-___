@@ -31,11 +31,13 @@ def api_app_factory(config_filename):
     # =====================ROUTING SETUP============================= #
 
     from api.users.views import AuthorizedEP
-    from api.posts.views import PostEP, PostsEP
+    from api.posts.views import PostEP, PostsEP, RatingEP, CommentEP
 
     # REGISTER API ROUTES
     api.add_resource(AuthorizedEP, '/auth/facebook')
     api.add_resource(PostsEP, '/posts')
     api.add_resource(PostEP, '/posts/post/<id>')
+    api.add_resource(RatingEP, '/ratings')
+    api.add_resource(CommentEP, '/comments')
     api.init_app(app)
     return app

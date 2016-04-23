@@ -12,7 +12,8 @@
             authenticate: authenticate,
             getPost: getPost,
             getTags: getTags,
-            createPost: createPost
+            createPost: createPost,
+            updateRating: updateRating
         };
 
         return service;
@@ -41,19 +42,17 @@
             })
                 .then(complete)
                 .catch(function(message) {
-                    $state.go('dashboard.404');
                     exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
                 });
 
             function complete(result) {
-                return result.data
+                return result.data;
             }
         }
 
         function createPost(args) {
             return $http.post('/api/posts', args).then(complete)
                 .catch(function(message) {
-                    $state.go('dashboard.404');
                     exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
                 });
 
@@ -61,6 +60,17 @@
                 $state.go('dashboard.post',{ postid: result.data.post.pid });
             }
 
+        }
+
+        function updateRating(args){
+            return $http.post('/api/ratings', args).then(complete)
+                .catch(function(message) {
+                    exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
+                });
+
+            function complete(result) {
+                return result.data;
+            }
         }
 
         function getTags() {
