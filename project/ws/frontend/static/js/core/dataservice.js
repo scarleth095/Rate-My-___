@@ -14,7 +14,9 @@
             getTags: getTags,
             createPost: createPost,
             updateRating: updateRating,
-            getRating: getRating
+            getRating: getRating,
+            createComment: createComment,
+            getPosts: getPosts
         };
 
         return service;
@@ -83,6 +85,28 @@
             function complete(result) {
                 return result.data;
             }
+        }
+
+        function createComment(args){
+           return $http.post('/api/comments', args).then(complete)
+               .catch(function(message) {
+                   exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
+               });
+
+           function complete(result) {
+               return result.data;
+           }
+        }
+
+        function getPosts(args){
+           return $http.get('/api/posts', {params: args}).then(complete)
+               .catch(function(message) {
+                   exception.catcher(message.data.message || 'Error')(angular.toJson(message, true));
+               });
+
+           function complete(result) {
+               return result.data;
+           }
         }
 
         function getTags() {

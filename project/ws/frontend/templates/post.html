@@ -9,7 +9,7 @@
                         <h1 class="title" class="col-lg-3">{{cm.post.title}}</h1> by <a href="#">{{cm.post.user.name}}</a>
                     </div>
                     <div>
-                        <div class="align-right">&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</div>
+                        <div class="align-right">&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{cm.post.created | moment}} </div>
                     </div>
                 </div>
                 <div ng-if="!cm.url_null" class="container">
@@ -34,12 +34,9 @@
                     <h3>
                     <div class="col-lg-4"></div>
                     <div class=" col-lg-4">
-                        <div class="align-left">
+                        <div class="align-center">
                             <i ng-repeat="i in cm.repeat(cm.rating) track by $index" class="fa fa-star"></i>
                             <i ng-repeat="i in cm.repeat(cm.rating_max - cm.rating) track by $index" class="fa fa-star-o"></i>
-                        </div>
-                        <div class="align-center">
-                            121 <i class="fa fa-comments"></i>
                         </div>
                     </div>
                     <div class="col-lg-4"></div>
@@ -54,7 +51,7 @@
                                 <form role="form">
                                     <div class="row">
                                         <div class="form-group col-lg-5">
-                                            <textarea class="form-control" rows="2"></textarea>
+                                            <textarea ng-model="cm.new_comment" class="form-control" rows="2"></textarea>
                                         </div>
                                     <div class="form-group col-lg-7"></div>
                                     </div>
@@ -63,28 +60,23 @@
                                             <div starrating rating-value="cm.my_rating" max="cm.rating_max" on-rating-selected="cm.getSelectedRating(rating)"></div>
                                     </div>
                                     <br/>
-                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                    <button type="submit" class="btn btn-danger" ng-click="cm.createComment()">Submit</button>
                                 </form>
                         </div>
                         <div class="row">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-7">
-                                <div class="media">
+                                <div ng-repeat="comment in cm.post.comments" class="media">
                                     <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                        <img class="media-object" height="40px" width="40px" ng-src="{{comment.user.profile_picture_url}}" alt="">
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading">Jake Smith
-                                            <small>August 25, 2014 at 9:30 PM</small>
-                                            <p><small>
-                                                <a> <i class="fa fa-thumbs-o-up"></i></a> 20   &nbsp;
-                                                <a><i class="fa fa-thumbs-o-down"></i></a> 3
-                                            </small></p>
+                                        <h4 class="media-heading">{{comment.user.name}}
+                                            <small>{{comment.created | moment}}</small>
                                         </h4>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate.
+                                        {{comment.comment}}
                                     </div>
-                                <div class="col-lg-3"></div>
-
+                                    <div class="col-lg-3"></div>
                                 </div>
                             </div>
                         </div>

@@ -144,7 +144,7 @@ class RatingEP(Resource):
 class CommentEP(Resource):
     def __init__(self):
         self.comment_request = CommentRequest()
-        self.comment_schema = CommentSchema()
+        self.comment_schema = CommentSchema(many=False)
         super(CommentEP, self).__init__()
 
     def post(self):
@@ -160,10 +160,10 @@ class CommentEP(Resource):
             user_object = User.objects.get(uid=uid)
         except User.DoesNotExist:
             raise exceptions.UserDoesNotExist("User Does Not Exist")
-        comment = post_object.comments.create(user=user_object, pid=args.data['pid'], rating=args.data['comment'])
+        comment = post_object.comments.create(user=user_object, pid=args.data['pid'], comment=args.data['comment'])
         post_object.save()
         response_comment = self.comment_schema.dump(comment)
-        return jsonify({"comment": response_comment})
+        return jsonify({"comment": response_comment.data})
 
 
 
