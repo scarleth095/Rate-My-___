@@ -45,7 +45,11 @@ input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-i
 textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
 
 
-
+body{
+   background-image: url("http://wallpaper.zone/img/2175204.png");
+    background-repeat: no-repeat;
+     background-size: 100% 100%;
+}
 .form-bottom .btn {
 	height: 50px;
     margin: 0;

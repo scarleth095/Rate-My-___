@@ -23,11 +23,13 @@
                         templateUrl: '/templates/home.html',
                         controller: 'HomeController',
                         controllerAs: 'cm'
+                        /*
                         resolve : {
                             postsdata: function (dataservice) {
                                 return dataservice.getPosts({page})
                             }
                         }
+                        */
                     },
                     {
                         name: 'post',

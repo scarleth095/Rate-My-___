@@ -1,56 +1,41 @@
 <p class="pad"> &nbsp;</p>
-<div class="container-fluid">
-    <p class="pad"> &nbsp;</p>
+<p class="pad"> &nbsp;</p>
+<section>
     <div id="wrapper" class="clear">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div col-lg-5>
-                        <h1 class="title" class="col-lg-3">{{cm.post.title}}</h1> by <a href="#">{{cm.post.user.name}}</a>
-                    </div>
-                    <div>
-                        <div class="align-right">&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{cm.post.created | moment}} </div>
-                    </div>
-                </div>
-                <div ng-if="!cm.url_null" class="container">
-                    <div class="col-lg-4"></div>
-                    <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px;">
-                        <img ng-src="{{cm.post.url}}" class="img-responsive">
-                    </div>
-                    <div class="col-lg-4"></div>
-                </div>
-                <br/>
-                <div class="row">
-                    <center>
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-                            <p>{{cm.post.description}}</p>
-                        </div>
-                        <div class="col-sm-3"></div>
-                    </center>
-                </div>
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-8">
+            <h1 class="title">{{cm.post.title}}</h1>
+            <p class="lead">
+                by <a href="#">{{cm.post.user.name}}</a>
+            </p>
                 <hr>
-                <center>
-                    <h3>
-                    <div class="col-lg-4"></div>
-                    <div class=" col-lg-4">
-                        <div class="align-center">
+                <div class="align-right"><span class="glyphicon glyphicon-time"></span> {{cm.post.created|moment}}</div>
+             <div style="clear: both;"></div>
+                 <hr>
+                <img ng-src="{{cm.post.url}}" class="img-responsive">
+                <hr>
+                    <center>
+                         <div class="post-star">
+                        <div class="align-left">
                             <i ng-repeat="i in cm.repeat(cm.rating) track by $index" class="fa fa-star"></i>
                             <i ng-repeat="i in cm.repeat(cm.rating_max - cm.rating) track by $index" class="fa fa-star-o"></i>
                         </div>
-                    </div>
-                    <div class="col-lg-4"></div>
-                    <br/>
-                    </h3>
-                </center>
-                <hr>
-                <div class="well">
-                    <div class="media">
-                        <div class="well">
+                        <div style="clear: both;"></div>
+                        </div>
+                    </center>
+                        <hr>
+                            <p class="lead">{{cm.post.description}}</p>
+                      <hr>
+                        
+                </div>
+                <div class="col-md-4">
+                     <div class="well">
+                    <center>
                             <h5>Leave a comment and rate:</h5>
                                 <form role="form">
                                     <div class="row">
-                                        <div class="form-group col-lg-5">
+                                        <div class="form-group">
                                             <textarea ng-model="cm.new_comment" class="form-control" rows="2"></textarea>
                                         </div>
                                     <div class="form-group col-lg-7"></div>
@@ -62,27 +47,25 @@
                                     <br/>
                                     <button type="submit" class="btn btn-danger" ng-click="cm.createComment()">Submit</button>
                                 </form>
+                    </center>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-2"></div>
-                            <div class="col-lg-7">
-                                <div ng-repeat="comment in cm.post.comments" class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" height="40px" width="40px" ng-src="{{comment.user.profile_picture_url}}" alt="">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">{{comment.user.name}}
-                                            <small>{{comment.created | moment}}</small>
-                                        </h4>
-                                        {{comment.comment}}
-                                    </div>
-                                    <div class="col-lg-3"></div>
-                                </div>
-                            </div>
-                        </div>
+                     <div class="well" style="overflow-y: scroll; height:450px;">
+                         <div ng-repeat="comment in cm.post.comments" class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" height="40px" width="40px" ng-src="{{comment.user.profile_picture_url}}" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{comment.user.name}}
+                                                <small>{{comment.created | moment}}</small>
+                                            </h4>
+                                            {{comment.comment}}
+                                        </div>
+                         </div>
+
+
                     </div>
-                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+</section>
