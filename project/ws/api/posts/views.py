@@ -8,6 +8,7 @@ from api.posts.models import Post, Tag, Rating
 from api.users.models import User
 from api.users.auth import Auth
 from api.users.fields import PublicUserSchema
+import math
 
 logger = logging.getLogger('ws_python')
 
@@ -61,7 +62,7 @@ class PostEP(Resource):
 class PostsEP(Resource):
     def __init__(self):
         self.post_schema = PostSchema()
-        self.post_search_schema = PostSearchSchema(many=True)
+        self.post_search_schema = PostSearchSchema()
         self.post_request = PostRequest()
         self.user_schema = PublicUserSchema()
         self.search_request = SearchRequest()
@@ -104,15 +105,19 @@ class PostsEP(Resource):
         if "search_field" in args.data:
             search_text = args.data['search_field']
             search_result = Post.objects.search_text(search_text).order_by('$weights')
+            result_length =len(search_result)
             offset = (args.data['page'] - 1) * self.items_per_page
             paginate_search_results = search_result.skip(offset).limit(self.items_per_page)
-            response_posts = self.post_search_schema.dump(paginate_search_results)
-            return jsonify({"posts": response_posts})
         else:
             offset = (args.data['page'] - 1) * self.items_per_page
+            result_length = len(Post.objects())
             paginate_search_results = Post.objects.order_by('-created').skip(offset).limit(self.items_per_page)
-            response_posts = self.post_search_schema.dump(paginate_search_results)
-            return jsonify({"posts": response_posts})
+        response_posts = []
+        for post in paginate_search_results:
+            post_dic = self.post_search_schema.dump(post).data
+            post_dic['rating'] = post.get_rating()
+            response_posts += [post_dic]
+        return jsonify({"posts": response_posts, "items": result_length})
 
 
 
@@ -122,6 +127,7 @@ class RatingEP(Resource):
         self.rating_schema = RatingSchema()
         super(RatingEP, self).__init__()
 
+    @Auth.authentication_required()
     def post(self):
         args = self.rating_request.load(request.get_json())
         if args.errors:
@@ -144,6 +150,7 @@ class RatingEP(Resource):
         response_post_rating = post_object.get_rating()
         return jsonify({"my_rating": response_my_rating.data, "post_rating": response_post_rating})
 
+    @Auth.authentication_required()
     def get(self):
         args = self.rating_request.load(request.args)
         if args.errors:
@@ -168,6 +175,7 @@ class CommentEP(Resource):
         self.comment_schema = CommentSchema(many=False)
         super(CommentEP, self).__init__()
 
+    @Auth.authentication_required()
     def post(self):
         args = self.comment_request.load(request.get_json())
         if args.errors:

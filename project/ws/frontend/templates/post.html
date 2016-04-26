@@ -12,9 +12,11 @@
                 <hr>
                 <div class="align-right"><span class="glyphicon glyphicon-time"></span> {{cm.post.created|moment}}</div>
              <div style="clear: both;"></div>
-                 <hr>
-                <img ng-src="{{cm.post.url}}" class="img-responsive">
-                <hr>
+                <div ng-if="!!cm.post.url">
+                    <hr>
+                    <img ng-src="{{cm.post.url}}" class="img-responsive">
+                    <hr>
+                </div>
                     <center>
                          <div class="post-star">
                         <div class="align-left">

@@ -22,14 +22,12 @@
                         url: '/dashboard',
                         templateUrl: '/templates/home.html',
                         controller: 'HomeController',
-                        controllerAs: 'cm'
-                        /*
+                        controllerAs: 'cm',
                         resolve : {
                             postsdata: function (dataservice) {
-                                return dataservice.getPosts({page})
+                                return dataservice.getPosts({page: 1})
                             }
                         }
-                        */
                     },
                     {
                         name: 'post',

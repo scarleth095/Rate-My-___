@@ -46,9 +46,11 @@ textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeh
 
 
 body{
-   background-image: url("http://il6.picdn.net/shutterstock/videos/14069966/thumb/1.jpg");
-    background-repeat: no-repeat;
-     background-size: 100% 100%;
+   background: url("http://il6.picdn.net/shutterstock/videos/14069966/thumb/1.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .form-bottom .btn {
 	height: 50px;

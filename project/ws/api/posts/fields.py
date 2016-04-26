@@ -23,7 +23,7 @@ class RatingSchema(ma.Schema):
 
 class CommentRequest(ma.Schema):
     pid = fields.Integer()
-    comment = fields.String()
+    comment = fields.String(validate=[validate.Length(min=1)])
 
 
 class SearchRequest(ma.Schema):
