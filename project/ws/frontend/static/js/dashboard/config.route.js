@@ -59,6 +59,21 @@
                         controllerAs: 'cm'
                     },
                     {
+                        name: 'search',
+                        url: '/search',
+                        templateUrl: '/templates/search.html',
+                        controller: 'SearchController',
+                        params: {
+                            search_field: null
+                        },
+                        resolve: {
+                            postsdata: function (dataservice, $stateParams) {
+                                return dataservice.getPosts({page: 1, search_field: $stateParams.search_field});
+                            }
+                        },
+                        controllerAs: 'cm'
+                    },
+                    {
                         name: '404',
                         url: '/404',
                         templateUrl: '/templates/404.html'

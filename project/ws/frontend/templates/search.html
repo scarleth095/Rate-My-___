@@ -1,0 +1,41 @@
+<center>
+    <div class="jumbotron">
+        <img class=" img-responsive img-title" src="../static/media/img/logo/logo2.png"></div>
+
+    <div id="wrapper" class="clear">
+        <div class="full-red">
+            <h2 class="title"><font color="white"> Posts Matching Search: {{cm.search_field}} </font></h2></div>
+        <p class="pad"></p>
+
+        <span class="title"> <font size="5px">Top Matches </font></span>
+
+        <center>
+            <div class="row">
+                <div ng-repeat="post in cm.postsdata" class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div ng-if="!!post.url">
+                            <img ng-src="{{post.url}}" alt="" style="height:400px;">
+                        </div>
+                        <div class="caption">
+                            <h3>{{post.title}}</h3>
+                            <p>{{post.user.name}}</p>
+                            <div class="align-left">
+                                <i ng-repeat="i in cm.repeat(post.rating) track by $index" class="fa fa-star"></i>
+                                <i ng-repeat="i in cm.repeat(cm.rating_max - post.rating) track by $index" class="fa fa-star-o"></i>
+                            </div>
+                            <div class="align-right">{{post.created| moment}}</div>
+                            <div style="clear: both;"></div>
+                            <p></p>
+                            <p><a ui-sref="dashboard.post({postid: post.pid})" class="btn btn-default btn-block" role="button">See More</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="align-center">
+                    <pagination direction-links="true" max-size=5  ng-model="cm.page" items-per-page="6" total-items="cm.items" ng-change="cm.getPosts()"></pagination>
+                </div>
+            </div>
+        </center>
+    </div>
+

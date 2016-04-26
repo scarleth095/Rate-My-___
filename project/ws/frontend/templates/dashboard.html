@@ -50,8 +50,8 @@
             <form class="navbar-form">
                 <div class="form-group" style="display:inline;">
                     <div class="input-group" style="display:table;">
-                        <input class="form-control" name="search" placeholder="Search ..." autocomplete="off" autofocus="autofocus" type="text">
-                        <span class=" btn btn-danger input-group-addon" style="width:1%;">
+                        <input class="form-control" ng-model="vm.search_string" name="search"  autocomplete="off" autofocus="autofocus" type="text">
+                        <span ng-click="vm.search()" class=" btn btn-danger input-group-addon" style="width:1%;">
                             <span class="glyphicon glyphicon-search"></span>
                         </span>
                     </div>

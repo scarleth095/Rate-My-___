@@ -48,7 +48,7 @@ class Post(db.Document):
     url = db.URLField()
 
     meta = {'indexes': [
-        {'fields': ['$title', "$description", '$tags'],
+        {'fields': ['$title', '$description', '$tags'],
          'default_language': 'english',
          'weights': {'title': 10, 'description': 5, 'tags': 2}
          }

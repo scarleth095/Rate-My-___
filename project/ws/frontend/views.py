@@ -7,6 +7,7 @@ from flask import make_response
 @frontend.route('/post/<postid>')
 @frontend.route('/create')
 @frontend.route('/profile')
+@frontend.route('/search')
 @frontend.route('/404')
 
 def page(**kwargs):

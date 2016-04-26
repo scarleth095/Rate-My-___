@@ -11,6 +11,8 @@
         vm.name = storageservice.getName();
         vm.profile_picture = storageservice.getProfilePicture();
         vm.logout = logout;
+        vm.search_string = "";
+        vm.search = search;
 
         function logout(){
             storageservice.clearUID();
@@ -18,6 +20,13 @@
             storageservice.clearToken();
             storageservice.clearProfilePicture();
             $state.go('login');
+        }
+
+        function search(){
+            var params = {
+                search_field: vm.search_string
+            };
+            $state.go('dashboard.search', params);
         }
 
     }

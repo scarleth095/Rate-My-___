@@ -25,6 +25,7 @@
 
         function createComment(){
             var params = {comment: cm.new_comment, pid: cm.post.pid};
+            cm.new_comment = "";
             dataservice.createComment(params).then(function (result) {
                 if (result) {
                     cm.post.comments.push(angular.copy(result.comment));
