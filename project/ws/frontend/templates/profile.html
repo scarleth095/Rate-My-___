@@ -14,7 +14,7 @@
             <!-- Split button -->
         <center>
 
-  <button type="button" class=" img-rounded btn btn-block btn-info"  aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#CreatePost">
+  <button type="button" class=" img-rounded btn btn-block btn-info" ui-sref="dashboard.create">
     <i class="fa fa-plus fa-lg"></i> &nbsp; Create Post &nbsp;
   </button>
 
@@ -24,26 +24,21 @@
 
         </center>
         <p class="pad"></p>
-        <div class="row">
+    <div class="row">
      
     <div class="thumbnail">
      <img class="img-rounded" height="45px" width="45px"alt="Profile Image" ng-src="{{vm.profile_picture}}">
       <div class="caption">
           <center>
         <h3> {{vm.name}} </h3>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros sem, laoreet vitae lobortis ac, ullamcorper non diam. Nulla ac velit lectus.</p>
               </center>
-              <p><i class="fa fa-map-marker fa-lg"></i> &nbsp;San Francisco, California</p>
           
       </div>
     
     </div>
             
     <ul class="nav nav-pills nav-stacked red">
-  <li class="active"><a href="#"><i class="fa fa-clipboard"></i> My Posts</a></li>
-  <li><a href="#"><i class="fa fa-comments"></i> Commented Posts</a></li>
-  <li><a href="#"> <i class="fa fa-heart"></i> Favorited Posts</a></li>
-  <li><a href="#"><i class="fa fa-users"></i> Followers</a></li>
+  <li class="active"><a href="#"><i class="fa fa-heart"></i> My Posts</a></li>
 </ul>
          
   </div>
@@ -56,98 +51,41 @@
     <div class="col-sm-5 col-sm-offset-1 col-md-7 col-md-offset-1" style="background-color:#a24544; border-radius: 20px;">
         <p> &nbsp;</p>
         <p class="line-gray">My Posts</p>
-            <div class="btn-group">
-  <button type="button" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Most Popular</a></li>
-    <li><a href="#">Most Comments</a></li>
-    <li><a href="#">Recently Added</a></li>
-  </ul>
-        </div>
+           
         <span class= "title white"> <font size="5px">Recently Added </font></span>
           <center>
-         <nav>
-              <ul class="pager">
-                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-                <li><a href="./index.html">1</a></li>
-                <li><a href="2/index.html">2</a></li>
-                <li class="next"><a href="2/index.html">Next <span aria-hidden="true">&rarr;</span></a></li>
-              </ul>
-          </nav>
         <div class="row">
-                              <div class="col-sm-4 col-md-6">
-                                 <div class="thumbnail">
-                                    <img src="./image/41524021-Outfit-of-traveler-student-teenager-young-woman-or-guy-Overhead-of-essentials-for-modern-young-perso-Stock-Photo.jpg" alt="" style="height:400px;">
-                                    <div class="caption">
-                                       <h3>How Is My Outfit Today?</h3>
-                                        <p>Sarah Smith</p>
-                                          <div class="align-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> </div>
-                                        <div class="align-center">121 <i class="fa fa-comments"></i></div>
-                                        <div class="align-right">4/02/16</div>
-                                        <div style="clear: both;"></div>
-                                        <p></p>
-                                       <p><a href="./post.html" class="btn btn-default btn-block" role="button">See More</a> </p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-4 col-md-6">
-                                  <div class="thumbnail">
-                                    <img src="./image/-9d03e2eeaaaa6e45.jpg" alt=""  style="height:400px;">
-                                    <div class="caption">
-                                       <h3>Ramen Everyday</h3>
-                                        <p>Carl Ross</p>
-                                          <div class="align-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> </div>
-                                        <div class="align-center">6 <i class="fa fa-comments"></i></div>
-                                        <div class="align-right">4/05/16</div>
-                                        <div style="clear: both;"></div>
-                                        <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-4 col-md-6">
-                                  <div class="thumbnail">
-                                    <img src="./image/bg-image.jpg" alt=""  style="height:400px;">
-                                    <div class="caption">
-                                       <h3>April is not Spring....</h3>
-                                        <p>JasonL</p>
-                                          <div class="align-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </div>
-                                        <div class="align-center">9 <i class="fa fa-comments"></i></div>
-                                        <div class="align-right">4/04/16</div>
-                                        <div style="clear: both;"></div>
-                                        <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
-                                    </div>
-                                 </div>
-                              </div>
-            <div class="col-sm-4 col-md-6">
-                                  <div class="thumbnail">
-                                    <img src="./image/bg-image.jpg" alt=""  style="height:400px;">
-                                    <div class="caption">
-                                       <h3>April is not Spring....</h3>
-                                        <p>JasonL</p>
-                                          <div class="align-left"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </div>
-                                        <div class="align-center">9 <i class="fa fa-comments"></i></div>
-                                        <div class="align-right">4/04/16</div>
-                                        <div style="clear: both;"></div>
-                                        <p></p>
-                                       <p><a href="Interview/h1.html" class="btn btn-default btn-block" role="button">See More</a> </p>
-                                    </div>
-                                 </div>
-                              </div>
-        </div>
-                        
-      
+                <span ng-repeat="post in cm.postsdata">
+                <span ng-if="post.user.name==cm.name">
+                <div class="col-sm-4 col-md-6">
+                    <div class="thumbnail">
+                        <div ng-if="!!post.url">
+                            <img ng-src="{{post.url}}" alt="" style="height:400px;">
+                        </div>
+                        <div class="caption">
+                            <h3>{{post.title}}</h3>
+                            <p>{{post.user.name}}</p>
+                            <div class="align-left">
+                                <i ng-repeat="i in cm.repeat(post.rating) track by $index" class="fa fa-star"></i>
+                                <i ng-repeat="i in cm.repeat(cm.rating_max - post.rating) track by $index" class="fa fa-star-o"></i>
+                            </div>
+                            <div class="align-right">{{post.created| moment}}</div>
+                            <div style="clear: both;"></div>
+                            <p></p>
+                            <p><a ui-sref="dashboard.post({postid: post.pid})" class="btn btn-default btn-block" role="button">See More</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            </span>
+            </div>
         </center>
       </div>
-  </div>
-</div>
+             </div>
+            </div>
+         </div>
+</section>
+
+                                
     
-         
-         </div>    
- 
-    </section>
+        

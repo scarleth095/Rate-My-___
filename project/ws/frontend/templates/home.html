@@ -11,7 +11,8 @@
 
         <center>
             <div class="row">
-                <div ng-repeat="post in cm.postsdata" class="col-sm-6 col-md-4">
+                <span ng-repeat="post in cm.postsdata">
+                <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                         <div ng-if="!!post.url">
                             <img ng-src="{{post.url}}" alt="" style="height:400px;">
@@ -30,6 +31,7 @@
                         </div>
                     </div>
                 </div>
+            </span>
             </div>
             <div class="row">
                 <div class="align-center">

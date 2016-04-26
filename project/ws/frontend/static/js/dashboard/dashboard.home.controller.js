@@ -5,8 +5,8 @@
         .module('abcss.dashboard')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['dataservice', 'logger', 'postsdata'];
-    function HomeController(dataservice, logger, postsdata) {
+    HomeController.$inject = ['dataservice', 'logger', 'postsdata','storageservice'];
+    function HomeController(dataservice, logger, postsdata,storageservice) {
         var cm = this;
         cm.page = 1;
         cm.items = postsdata.items;
@@ -14,7 +14,7 @@
         cm.rating_max = 5;
         cm.repeat = repeat;
         cm.getPosts = getPosts;
-
+         cm.name = storageservice.getName();
         function repeat(num) {
             return new Array(num);
         }
