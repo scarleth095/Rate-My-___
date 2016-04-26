@@ -56,7 +56,12 @@
                         url: '/profile',
                         templateUrl: '/templates/profile.html',
                         controller: 'ProfileController',
-                        controllerAs: 'cm'
+                        controllerAs: 'cm',
+                         resolve : {
+                            postsdata: function (dataservice) {
+                                return dataservice.getPosts({page: 1})
+                            }
+                        }
                     },
                     {
                         name: 'search',
