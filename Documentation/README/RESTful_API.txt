@@ -22,13 +22,13 @@ SETTINGS:
 
     if 'DB_PORT' in os.environ:
         MONGODB_SETTINGS = {
-            'db': 'abcss_develop_db',
+            'db': 'ws_develop_db',
             'host': os.environ['DB_PORT_27017_TCP_ADDR']+':' + os.environ['DB_PORT_27017_TCP_PORT']
         }
 
     else:
         MONGODB_SETTINGS = {
-            'db': 'abcss_local_develop_db'
+            'db': 'ws_local_develop_db'
         }
 
     https://docs.docker.com/userguide/dockerlinks/
@@ -67,7 +67,7 @@ SERVERS: https://www.digitalocean.com/community/tutorials/how-to-deploy-python-w
     GREEN_UNICORN:
         Used to run wsgi apps. Some dynamic code is in there to determine what port to
         run the app on, and also to run as a daemon or not.
-        gunicorn is started in tandem with nginx in the runserver bash command located in abcss/abcss_ws/etc/scripts
+        gunicorn is started in tandem with nginx in the runserver bash command located in project/ws/etc/scripts
 
         the actual config file contains documentation in comments.
 
@@ -81,7 +81,7 @@ MODIFICATION INSTRUCTIONS:
 
     Add Endpoint:
         to create an endpoint use an established endpoint as a base and build from there
-            - if the endpoint is not related to threat or user documents then create a new file containing
+            - if the endpoint is not related to post or user documents then create a new file containing
                 - fields.py
                 - models.py
                 - views.py
@@ -100,5 +100,5 @@ MODIFICATION INSTRUCTIONS:
             https://pythonhosted.org/Flask-Testing/
 
 TODO:
-    - Add logger
-    - Protect threats post endpoint via basic auth http://flask.pocoo.org/snippets/8/
+    - Add logger files
+    - Add test cases to test suite.

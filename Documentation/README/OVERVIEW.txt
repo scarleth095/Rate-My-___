@@ -1,0 +1,32 @@
+README
+++++++++++++
+TECH & RESOURCES
+++++++++++++
+FRONTEND:
+    FRAMEWORK: AngularJS | https://angularjs.org/
+    For more information go to angular file
+RESTful API:
+    FRAMEWORK: Flask | http://flask.pocoo.org/
+    DATABASE: Mongodb, used ORM mongoengine| http://docs.mongoengine.org/
+    for more information go to the RESTful_API file
+
+++++++++++++
+INSTRUCTIONS
+++++++++++++
+
+    to develop in the docker container
+        - ensure you are on the correct branch you wish to develop in and it is up to date
+        - docker build -t project_ws .
+        - if no mongo container exists
+            - docker run --name mongo_db -d mongo      
+        - docker stop project_ws_cntr (if container is running)
+        - docker rm project_ws_cntr   (if container is running)
+        - docker run -it --name project_ws_cntr --link mongo_db:DB -p 200:443 project_ws
+            - runserver API Develop
+            - runserver Frontend Develop
+
+    to delete and remake the mongodb database (will lose all data)
+        - docker stop mongo_db
+        - docker rm mongo_db
+        - docker run --name mongo_db -d mongo
+

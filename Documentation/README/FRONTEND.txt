@@ -1,7 +1,7 @@
 (IMPORTANT) The angularjs frontend is intitially being served by a flask wsgi app. When you add new pages make sure you add the
 new link to the frontend views so it can correctly be served by our Angularjs app
 
-    RELEVANT CODE: abcss/abcss_ws/frontend/views.py
+    RELEVANT CODE: project/ws/frontend/views.py
 
 STRUCTURE: https://github.com/johnpapa/angular-styleguide
     John Papa is the GOAT of angular. Attempt to find code examples and explanations from him.
@@ -36,16 +36,16 @@ KEY FEATURES:
     TOKENS: https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
             https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
 
-        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/core/authinterceptor.js
-                       abcss/abcss_ws/frontend/static/js/app.config.js (implements authinterceptor)
+        RELEVANT_CODE: project/ws/frontend/static/js/core/authinterceptor.js
+                       project/ws/frontend/static/js/app.config.js (implements authinterceptor)
 
         Great blog post explaining the benefits of tokens over cookies. Also provides explanation of implementing an AuthInterceptor to add
         an Authorization header to all API calls from the webapp.
 
     ACCESS CONTROL: https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
 
-        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/core/authservice
-                       abcss/abcss_ws/frontend/static/js/app.run.js (implements authservice)
+        RELEVANT_CODE: project/ws/frontend/static/js/core/authservice
+                       project/ws/frontend/static/js/app.run.js (implements authservice)
 
         "Authorization a.k.a. access control in AngularJS doesn’t really exist. Since we’re talking about a client-side application,
         all of the source code is in the client’s hands. There’s nothing preventing the user from tampering with that code to gain ‘access’
@@ -66,16 +66,16 @@ KEY FEATURES:
                     http://www.html5rocks.com/en/tutorials/es6/promises/#toc-error-handling
 
                 RELEVANT_CODE:
-                    abcss/abcss_ws/frontend/static/js/core/storageservice.js
+                    project/ws/frontend/static/js/core/storageservice.js
                     lots of dashboard controllers use .then to continue chaining and processing information after receiving it from
                     the data service.
                     the routing resolve uses promises. This is discussed in the links provided in the ROUTING SECTION
 
     ROUTING: https://github.com/angular-ui/ui-router/wiki
 
-        RELEVANT_CODE: abcss/abcss_ws/frontend/static/js/dashboard/config.route.js
-                       abcss/abcss_ws/frontend/static/js/login/config.route.js
-                       abcss/abcss_ws/blocks/router
+        RELEVANT_CODE: project/ws/frontend/static/js/dashboard/config.route.js
+                       project/ws/frontend/static/js/login/config.route.js
+                       project/ws/blocks/router
 
         The documentation is really good for this so no elaboration.
 
@@ -110,11 +110,6 @@ MODIFICATION INSTRUCTIONS:
             -if page is a child view of the dashboard view:
                 - do the view routing in the dashboard/config.route.js
                 - add a controller for the page in the dashboard file.
-                - if you need to change any of the dashboard views scope values from the child view such as
-                   the breadcrumb or page title use this code. Make sure you inject $scope into your controller function.
-                        var vm = $scope.vm;
-                        vm.pageTitle = 'Dashboard';
-                        vm.breadcrumb = '/dashboard';
                 - add your controller js file to the index.html via a script tag in the dashboard section.
             - if page is not a child view of the dashboard.
                 - create a new file with an appropriate name
@@ -122,10 +117,6 @@ MODIFICATION INSTRUCTIONS:
                 - create a module file
                 - create a controller file
                 - add all these files to the index.html in a new section with the name of your file via a script tag.
-    ADD error page:
-        - follow the instructions for adding a new web page if the page is not a child view of the dashboard.
-        - modify the authinterceptor code so that on a serviceResponseError if the response_codes returned are not -4 or -5
-            send the client to the error state.
 
     ADD API endpoint to dataservice:
         - make sure you understand how promises work
@@ -133,7 +124,3 @@ MODIFICATION INSTRUCTIONS:
           api link. Make sure that the http method you are using matches your apis http method.
         - view controllers and route resolves where the api is being called by the dataservice to fully understand how to make use of the
           new endpoint.
-
-
-TODO:
-    ADD ERROR PAGE.
